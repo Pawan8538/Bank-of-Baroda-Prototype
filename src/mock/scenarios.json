@@ -1,0 +1,71 @@
+{
+  "scenarios": [
+    {
+      "id": "A",
+      "name": "Priya Sharma",
+      "label": "Legitimate User",
+      "avatar": "PS",
+      "riskLevel": "low",
+      "trustScore": 91,
+      "decision": "ALLOW",
+      "signals": [
+        { "id": "device", "name": "Device Fingerprint", "status": "trusted", "value": "FP_8892A — Known device" },
+        { "id": "location", "name": "Geo Location", "status": "trusted", "value": "Ahmedabad, GJ — matches profile" },
+        { "id": "sim", "name": "SIM Integrity", "status": "stable", "value": "No SIM change in 30 days" },
+        { "id": "behaviour", "name": "Behaviour Pattern", "status": "normal", "value": "Matches 94% of baseline" }
+      ],
+      "factors": [
+        { "name": "Device Trust", "score": 95, "weight": 30 },
+        { "name": "Location Risk", "score": 92, "weight": 25 },
+        { "name": "SIM Integrity", "score": 98, "weight": 30 },
+        { "name": "Behaviour Pattern", "score": 88, "weight": 15 }
+      ],
+      "explanation": "All four trust signals align with the account owner's established profile. Device fingerprint FP_8892A has been active for 14 months. Location matches the user's registered home city. No SIM routing changes detected. Approving with zero friction."
+    },
+    {
+      "id": "B",
+      "name": "Rahul Mehta",
+      "label": "Coffee Shop User",
+      "avatar": "RM",
+      "riskLevel": "medium",
+      "trustScore": 58,
+      "decision": "VERIFY",
+      "signals": [
+        { "id": "device", "name": "Device Fingerprint", "status": "unknown", "value": "FP_5541B — First seen today" },
+        { "id": "location", "name": "Geo Location", "status": "trusted", "value": "Bengaluru, KA — matches work city" },
+        { "id": "sim", "name": "SIM Integrity", "status": "stable", "value": "No SIM change. Stable." },
+        { "id": "behaviour", "name": "Behaviour Pattern", "status": "elevated", "value": "New device raises uncertainty" }
+      ],
+      "factors": [
+        { "name": "Device Trust", "score": 12, "weight": 30 },
+        { "name": "Location Risk", "score": 85, "weight": 25 },
+        { "name": "SIM Integrity", "score": 96, "weight": 30 },
+        { "name": "Behaviour Pattern", "score": 55, "weight": 15 }
+      ],
+      "explanation": "Unknown device detected — this is the first recovery attempt from FP_5541B. However, the location matches the user's known work city and SIM is stable. Risk is moderate. Routing to Blink Liveness Verification to confirm physical presence before granting access.",
+      "postVerifyScore": 81
+    },
+    {
+      "id": "C",
+      "name": "Unknown Actor",
+      "label": "SIM Swap Attacker",
+      "avatar": "??",
+      "riskLevel": "critical",
+      "trustScore": 8,
+      "decision": "BLOCK",
+      "signals": [
+        { "id": "device", "name": "Device Fingerprint", "status": "unknown", "value": "FP_0019X — Never seen before" },
+        { "id": "location", "name": "Geo Location", "status": "critical", "value": "Mumbai, MH — last seen: London, UK (45 min ago)" },
+        { "id": "sim", "name": "SIM Integrity", "status": "swapped", "value": "⚠ SIM SWAP — changed 6 hours ago" },
+        { "id": "behaviour", "name": "Impossible Travel", "status": "critical", "value": "820 km in 45 min — physically impossible" }
+      ],
+      "factors": [
+        { "name": "Device Trust", "score": 2, "weight": 30 },
+        { "name": "Location Risk", "score": 4, "weight": 25 },
+        { "name": "SIM Integrity", "score": 3, "weight": 30 },
+        { "name": "Behaviour Pattern", "score": 1, "weight": 15 }
+      ],
+      "explanation": "CRITICAL THREAT DETECTED. Three simultaneous red flags: (1) Unrecognised device fingerprint FP_0019X. (2) Impossible travel — account last accessed from London 45 minutes ago; current attempt from Mumbai. (3) SIM swap confirmed — carrier identity changed 6 hours ago. Auto-block engaged. Account Protection Mode activating."
+    }
+  ]
+}

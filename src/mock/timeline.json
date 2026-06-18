@@ -1,0 +1,15 @@
+{
+  "incidentId": "INC-2026-00847",
+  "events": [
+    { "t": "14:02:11", "actor": "Edge Browser", "severity": "info", "action": "Recovery page opened from IP 203.xx.xx.42" },
+    { "t": "14:02:12", "actor": "Signal Engine", "severity": "warning", "action": "Unknown device fingerprint FP_0019X detected" },
+    { "t": "14:02:13", "actor": "Geo Engine", "severity": "critical", "action": "Impossible travel flag: London→Mumbai in 45 min" },
+    { "t": "14:02:13", "actor": "Telecom Mock", "severity": "critical", "action": "SIM swap confirmed — identity reissued 6h ago" },
+    { "t": "14:02:14", "actor": "ICE Engine", "severity": "critical", "action": "Trust Score computed: 8/100 — CRITICAL RISK" },
+    { "t": "14:02:14", "actor": "Auto Block", "severity": "critical", "action": "Recovery attempt BLOCKED — rule AUTO_BLOCK_CRITICAL" },
+    { "t": "14:02:15", "actor": "Alert Service", "severity": "info", "action": "SMS alert dispatched to registered contact +91-****-****-7742" },
+    { "t": "14:02:15", "actor": "Session Mgr", "severity": "warning", "action": "3 active sessions revoked — all JWT tokens invalidated" },
+    { "t": "14:02:16", "actor": "Protection Eng", "severity": "critical", "action": "Account Protection Mode ACTIVATED — 72h lockdown" },
+    { "t": "14:02:16", "actor": "Audit Ledger", "severity": "info", "action": "Incident INC-2026-00847 logged — immutable record created" }
+  ]
+}

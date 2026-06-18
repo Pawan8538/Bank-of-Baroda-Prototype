@@ -1,0 +1,25 @@
+{
+  "kpis": [
+    { "id": "incidents", "label": "Incidents (24h)", "value": 47, "delta": "+3", "colour": "orange" },
+    { "id": "blocked", "label": "Blocked Attempts", "value": 12, "delta": "+2", "colour": "red" },
+    { "id": "avgScore", "label": "Avg Trust Score", "value": 78.4, "delta": "-1.2", "colour": "blue" },
+    { "id": "protected", "label": "Users Protected", "value": 1203847, "delta": "", "colour": "green" }
+  ],
+  "chartData": [
+    { "time": "06:00", "score": 82, "blocked": 1 },
+    { "time": "08:00", "score": 80, "blocked": 2 },
+    { "time": "10:00", "score": 78, "blocked": 1 },
+    { "time": "12:00", "score": 75, "blocked": 3 },
+    { "time": "14:00", "score": 51, "blocked": 8 },
+    { "time": "15:00", "score": 44, "blocked": 12 },
+    { "time": "16:00", "score": 71, "blocked": 4 },
+    { "time": "18:00", "score": 79, "blocked": 2 },
+    { "time": "20:00", "score": 83, "blocked": 1 }
+  ],
+  "sessions": [
+    { "id": "S001", "user": "****2847", "device": "Chrome / Windows", "location": "Mumbai", "duration": "14m", "riskLevel": "low" },
+    { "id": "S002", "user": "****9134", "device": "Safari / iPhone", "location": "Delhi", "duration": "3m", "riskLevel": "medium" },
+    { "id": "S003", "user": "****5521", "device": "Unknown / Linux", "location": "Chennai", "duration": "1m", "riskLevel": "critical" },
+    { "id": "S004", "user": "****7703", "device": "Firefox / Mac", "location": "Ahmedabad", "duration": "22m", "riskLevel": "low" }
+  ]
+}
