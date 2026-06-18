@@ -4,6 +4,7 @@ import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import BoBLogoBar from './BoBLogoBar';
 import SidebarNav from './SidebarNav';
 import ParticleNetwork from './ParticleNetwork';
+import ChatbotFAQ from './ChatbotFAQ';
 
 export default function AppShell({ currentScreen, onNavigate, children }) {
   const [collapsed, setCollapsed] = useState(false);
@@ -11,6 +12,7 @@ export default function AppShell({ currentScreen, onNavigate, children }) {
   return (
     <div className="flex flex-col h-screen w-screen overflow-hidden bg-background relative">
       <ParticleNetwork />
+      <ChatbotFAQ />
       
       {/* Top Bar */}
       <BoBLogoBar onNavigate={onNavigate} />
