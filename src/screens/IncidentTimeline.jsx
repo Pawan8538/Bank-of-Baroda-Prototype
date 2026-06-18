@@ -16,8 +16,8 @@ export default function IncidentTimeline({ onNavigate }) {
   const cfg = selectedEvent ? (severityConfig[selectedEvent.severity] || severityConfig.info) : null;
 
   return (
-    <div className="min-h-full bg-bob-gradient px-8 py-8">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-full bg-background px-8 py-8">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -15 }}
@@ -30,15 +30,15 @@ export default function IncidentTimeline({ onNavigate }) {
               Forensic Audit Log
             </span>
           </div>
-          <h1 className="text-white text-2xl font-bold">Incident Timeline</h1>
-          <p className="text-white/50 text-sm">
+          <h1 className="text-corporate text-3xl font-black">Incident Timeline</h1>
+          <p className="text-text-secondary text-sm font-medium mt-1">
             Incident {timelineData.incidentId} · Immutable record · 10 events in 5 seconds
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-2 gap-10">
           {/* Timeline */}
-          <div className="glass-card p-6 overflow-y-auto max-h-[600px]">
+          <div className="card p-8 bg-slate-50 border-slate-200 overflow-y-auto max-h-[600px] shadow-sm">
             <TimelineTrack
               events={timelineData.events}
               selectedId={selectedId}
@@ -55,28 +55,28 @@ export default function IncidentTimeline({ onNavigate }) {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
-                  className={`glass-card p-6 border ${cfg.border} ${cfg.bg}`}
+                  className={`card p-8 border ${cfg.border} ${cfg.bg} shadow-md`}
                 >
-                  <div className={`text-xs font-bold uppercase tracking-wider mb-3 ${cfg.text}`}>
+                  <div className={`text-xs font-bold uppercase tracking-widest mb-4 ${cfg.text}`}>
                     {selectedEvent.severity} event
                   </div>
-                  <div className="text-white font-bold text-lg mb-2">{selectedEvent.actor}</div>
-                  <div className="font-mono text-xs text-white/40 mb-4">{selectedEvent.t}</div>
-                  <p className="text-white/80 leading-relaxed">{selectedEvent.action}</p>
+                  <div className="text-corporate font-bold text-xl mb-2">{selectedEvent.actor}</div>
+                  <div className="font-mono text-xs text-text-secondary/70 mb-5 font-semibold">{selectedEvent.t}</div>
+                  <p className="text-text-secondary font-medium leading-relaxed mb-6">{selectedEvent.action}</p>
 
                   {/* Fake extra detail */}
-                  <div className="mt-5 pt-4 border-t border-white/10 flex flex-col gap-2">
-                    <div className="flex justify-between text-xs">
-                      <span className="text-white/40">Incident ID</span>
-                      <span className="text-white/70 font-mono">{timelineData.incidentId}</span>
+                  <div className="mt-6 pt-5 border-t border-slate-200/50 flex flex-col gap-3">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-text-secondary/60 font-medium">Incident ID</span>
+                      <span className="text-corporate font-mono font-bold">{timelineData.incidentId}</span>
                     </div>
-                    <div className="flex justify-between text-xs">
-                      <span className="text-white/40">Rule triggered</span>
-                      <span className="text-white/70 font-mono">AUTO_BLOCK_CRITICAL</span>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-text-secondary/60 font-medium">Rule triggered</span>
+                      <span className="text-corporate font-mono font-bold">AUTO_BLOCK_CRITICAL</span>
                     </div>
-                    <div className="flex justify-between text-xs">
-                      <span className="text-white/40">Logged</span>
-                      <span className="text-white/70 font-mono">Immutable · Audit Ledger</span>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-text-secondary/60 font-medium">Logged</span>
+                      <span className="text-green-600 font-mono font-bold">Immutable · Audit Ledger</span>
                     </div>
                   </div>
                 </motion.div>
@@ -85,10 +85,10 @@ export default function IncidentTimeline({ onNavigate }) {
                   key="empty"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="glass-card p-10 flex flex-col items-center justify-center text-center h-64"
+                  className="card p-10 flex flex-col items-center justify-center text-center h-64 bg-slate-50 border-slate-200 border-dashed"
                 >
-                  <FileText size={28} className="text-white/20 mb-3" />
-                  <p className="text-white/30 text-sm">Click any event to view details</p>
+                  <FileText size={32} className="text-slate-300 mb-4" />
+                  <p className="text-text-secondary font-medium text-sm">Click any event to view details</p>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -99,10 +99,10 @@ export default function IncidentTimeline({ onNavigate }) {
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
               onClick={() => onNavigate('dashboard')}
-              className="mt-5 btn-primary flex items-center gap-2 w-full justify-center"
+              className="mt-8 btn-primary flex items-center gap-3 text-lg w-full justify-center py-4 shadow-sm"
             >
               View Fraud Ops Center
-              <ArrowRight size={16} />
+              <ArrowRight size={20} strokeWidth={2.5} />
             </motion.button>
           </div>
         </div>

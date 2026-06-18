@@ -49,7 +49,7 @@ export default function SidebarNav({ currentScreen, onNavigate, collapsed }) {
       {navGroups.map((group) => (
         <div key={group.label} className="mb-3">
           {!collapsed && (
-            <div className="text-[10px] font-bold uppercase tracking-widest text-white/30 px-3 mb-2">
+            <div className="text-[10px] font-bold uppercase tracking-widest text-text-secondary/60 px-3 mb-2">
               {group.label}
             </div>
           )}
@@ -62,24 +62,24 @@ export default function SidebarNav({ currentScreen, onNavigate, collapsed }) {
                 whileHover={{ x: 2 }}
                 whileTap={{ scale: 0.97 }}
                 className={`
-                  w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-left transition-all duration-150
+                  w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-left transition-all duration-150
                   ${isActive
-                    ? 'bg-primary/20 border border-primary/30 text-primary'
-                    : 'text-white/50 hover:text-white hover:bg-white/5'
+                    ? 'bg-slate-100 text-corporate font-semibold shadow-sm'
+                    : 'text-text-secondary hover:text-corporate hover:bg-slate-50'
                   }
                 `}
                 title={collapsed ? label : undefined}
               >
                 <Icon
-                  className={`flex-shrink-0 ${isActive ? 'text-primary' : 'text-white/40'}`}
+                  className={`flex-shrink-0 ${isActive ? 'text-corporate' : 'text-text-secondary/60'}`}
                   size={16}
-                  strokeWidth={isActive ? 2 : 1.5}
+                  strokeWidth={isActive ? 2.5 : 2}
                 />
                 {!collapsed && (
-                  <span className="text-sm font-medium truncate">{label}</span>
+                  <span className="text-sm truncate">{label}</span>
                 )}
                 {!collapsed && isActive && (
-                  <ChevronRight size={12} className="ml-auto text-primary opacity-60" />
+                  <ChevronRight size={14} className="ml-auto text-corporate" />
                 )}
               </motion.button>
             );

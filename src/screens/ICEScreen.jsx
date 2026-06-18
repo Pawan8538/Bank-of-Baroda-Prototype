@@ -16,34 +16,36 @@ export default function ICEScreen({ scenarioId = 'A', onNavigate }) {
   }, []);
 
   return (
-    <div className="min-h-full bg-bob-gradient px-8 py-8">
+    <div className="min-h-full bg-background px-8 py-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
+          className="mb-8 text-center"
         >
-          <div className="flex items-center gap-2 mb-1">
-            <Cpu size={16} className="text-primary" />
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <Cpu size={20} className="text-primary" />
             <span className="text-primary text-xs font-bold tracking-widest uppercase">
               Identity Confidence Engine
             </span>
           </div>
-          <h1 className="text-white text-2xl font-bold">Computing Trust Score</h1>
-          <p className="text-white/50 text-sm">{scenario.name} · {scenario.label}</p>
+          <h1 className="text-corporate text-4xl font-black">Computing Trust Score</h1>
+          <p className="text-text-secondary text-sm font-medium mt-2">
+            {scenario.name} · {scenario.label}
+          </p>
         </motion.div>
 
         {/* 3-column layout */}
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-3 gap-8">
           {/* Left: Factor bars */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="glass-card p-6 flex flex-col gap-5"
+            className="card p-6 flex flex-col gap-6"
           >
-            <div className="text-white/60 text-xs uppercase tracking-wider font-semibold border-b border-white/10 pb-3">
+            <div className="text-text-secondary text-xs uppercase tracking-widest font-bold border-b border-border pb-4">
               Trust Factors
             </div>
             {scenario.factors.map((f, i) => (
@@ -58,20 +60,21 @@ export default function ICEScreen({ scenarioId = 'A', onNavigate }) {
           </motion.div>
 
           {/* Centre: Gauge */}
-          <div className="flex flex-col items-center justify-center gap-6">
+          <div className="flex flex-col items-center justify-center gap-8">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
+              className="bg-white rounded-full p-6 shadow-sm border border-slate-100"
             >
               <ConfidenceGauge score={scenario.trustScore} size={220} animated />
             </motion.div>
 
             {/* User context strip */}
-            <div className="glass-card p-4 w-full text-center">
-              <div className="text-white/40 text-xs mb-1">Evaluating</div>
-              <div className="text-white font-bold">{scenario.name}</div>
-              <div className="text-white/50 text-xs">{scenario.label}</div>
+            <div className="card p-5 w-full text-center bg-slate-50 border-slate-200">
+              <div className="text-text-secondary text-xs font-semibold uppercase tracking-wider mb-2">Evaluating</div>
+              <div className="text-corporate font-bold text-lg">{scenario.name}</div>
+              <div className="text-text-secondary font-medium text-xs mt-1">{scenario.label}</div>
             </div>
           </div>
 
@@ -87,14 +90,14 @@ export default function ICEScreen({ scenarioId = 'A', onNavigate }) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: showButton ? 1 : 0 }}
-          className="flex justify-center mt-8"
+          className="flex justify-center mt-12"
         >
           <button
             onClick={() => onNavigate('decision', scenarioId)}
-            className="btn-primary flex items-center gap-2 text-base px-8 py-4"
+            className="btn-primary flex items-center gap-3 text-lg px-10 py-4 shadow-sm"
           >
             View Decision
-            <ArrowRight size={18} />
+            <ArrowRight size={20} strokeWidth={2.5} />
           </button>
         </motion.div>
       </div>

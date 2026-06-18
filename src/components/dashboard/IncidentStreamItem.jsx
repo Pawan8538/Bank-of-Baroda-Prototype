@@ -10,9 +10,9 @@ const statusIcons = {
 };
 
 const statusColours = {
-  blocked: 'text-red-400',
-  verified: 'text-orange-400',
-  allowed: 'text-green-400',
+  blocked: 'text-red-600',
+  verified: 'text-orange-600',
+  allowed: 'text-green-600',
 };
 
 export default function IncidentStreamItem({ incident, index = 0 }) {
@@ -24,30 +24,30 @@ export default function IncidentStreamItem({ incident, index = 0 }) {
       initial={{ height: 0, opacity: 0 }}
       animate={{ height: 'auto', opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className="flex items-center gap-3 py-2.5 px-3 border-b border-white/5 hover:bg-white/5 transition-colors cursor-default"
+      className="flex items-center gap-3 py-3 px-3 border-b border-border hover:bg-slate-50 transition-colors cursor-default"
     >
       {/* Severity dot */}
       <div
-        className="w-2 h-2 rounded-full flex-shrink-0"
+        className="w-2.5 h-2.5 rounded-full flex-shrink-0"
         style={{ backgroundColor: cfg.hex }}
       />
 
       {/* Time */}
-      <span className="text-white/30 font-mono text-xs w-10 flex-shrink-0">{incident.time}</span>
+      <span className="text-text-secondary/60 font-mono text-xs w-10 flex-shrink-0 font-medium">{incident.time}</span>
 
       {/* Type */}
-      <span className="text-white/70 text-xs font-medium flex-shrink-0 w-32 truncate">{incident.type}</span>
+      <span className="text-corporate text-xs font-bold flex-shrink-0 w-32 truncate">{incident.type}</span>
 
       {/* User */}
-      <span className="text-white/40 font-mono text-xs flex-shrink-0 w-20">{incident.user}</span>
+      <span className="text-text-secondary font-mono text-xs flex-shrink-0 w-20">{incident.user}</span>
 
       {/* Location */}
-      <span className="text-white/40 text-xs flex-1 truncate">{incident.location}</span>
+      <span className="text-text-secondary text-xs flex-1 truncate">{incident.location}</span>
 
       {/* Status */}
-      <div className={`flex items-center gap-1 text-xs font-bold flex-shrink-0 ${statusColours[incident.status] || 'text-white/40'}`}>
-        <Icon size={11} />
-        <span className="uppercase">{incident.status}</span>
+      <div className={`flex items-center gap-1.5 text-[10px] font-bold flex-shrink-0 ${statusColours[incident.status] || 'text-text-secondary'}`}>
+        <Icon size={12} strokeWidth={2.5} />
+        <span className="uppercase tracking-wider">{incident.status}</span>
       </div>
     </motion.div>
   );

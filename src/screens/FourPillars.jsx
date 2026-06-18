@@ -55,28 +55,28 @@ const pillars = [
 
 export default function FourPillars({ onNavigate }) {
   return (
-    <div className="min-h-full bg-bob-gradient px-8 py-10">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-full bg-background px-8 py-10">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-10"
+          className="text-center mb-12"
         >
           <div className="flex items-center justify-center gap-2 mb-3">
-            <Shield size={18} className="text-primary" />
+            <Shield size={20} className="text-primary" />
             <span className="text-primary text-xs font-bold tracking-widest uppercase">
               Platform Architecture
             </span>
           </div>
-          <h1 className="section-title text-4xl">The Four Pillars</h1>
-          <p className="section-subtitle mt-2 max-w-lg mx-auto">
+          <h1 className="text-5xl font-black text-corporate mb-4">The Four Pillars</h1>
+          <p className="text-text-secondary text-lg font-medium max-w-lg mx-auto">
             A complete account recovery fraud prevention lifecycle. Click any pillar to explore its capabilities.
           </p>
         </motion.div>
 
         {/* Pillar cards */}
-        <div className="grid grid-cols-2 gap-5 mb-10">
+        <div className="grid grid-cols-2 gap-8 mb-12 items-start">
           {pillars.map((p, i) => (
             <PillarCard key={p.label} pillar={p} delay={i * 0.1} />
           ))}
@@ -91,10 +91,10 @@ export default function FourPillars({ onNavigate }) {
         >
           <button
             onClick={() => onNavigate('select')}
-            className="btn-primary flex items-center gap-2"
+            className="btn-primary flex items-center gap-3 text-lg px-10 py-4 shadow-sm"
           >
             See It In Action
-            <ArrowRight size={16} />
+            <ArrowRight size={20} strokeWidth={2.5} />
           </button>
         </motion.div>
       </div>

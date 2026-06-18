@@ -32,7 +32,7 @@ export default function FraudOpsCenter() {
   }, []);
 
   return (
-    <div className="min-h-full bg-bob-gradient px-8 py-8">
+    <div className="min-h-full bg-background px-8 py-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -47,11 +47,11 @@ export default function FraudOpsCenter() {
                 Operations Dashboard
               </span>
             </div>
-            <h1 className="text-white text-2xl font-bold">Fraud Ops Center</h1>
-            <p className="text-white/50 text-sm">Real-time · Last 24 hours</p>
+            <h1 className="text-corporate text-3xl font-black">Fraud Ops Center</h1>
+            <p className="text-text-secondary text-sm font-medium mt-1">Real-time · Last 24 hours</p>
           </div>
-          <div className="flex items-center gap-2 text-white/30 text-xs">
-            <RefreshCw size={12} className="animate-spin" style={{ animationDuration: '3s' }} />
+          <div className="flex items-center gap-2 text-text-secondary text-xs">
+            <RefreshCw size={12} className="animate-spin text-primary" style={{ animationDuration: '3s' }} />
             Live feed active
           </div>
         </motion.div>
@@ -70,17 +70,17 @@ export default function FraudOpsCenter() {
             <TrustScoreChart data={dashboardData.chartData} />
 
             {/* Incident stream */}
-            <div className="glass-card p-5">
+            <div className="card p-5">
               <div className="flex items-center justify-between mb-3">
-                <div className="text-white font-semibold text-sm">Live Incident Stream</div>
-                <div className="flex items-center gap-1.5">
-                  <div className="w-1.5 h-1.5 bg-red-400 rounded-full animate-pulse" />
-                  <span className="text-white/30 text-xs">Live</span>
+                <div className="text-corporate font-bold text-lg">Live Incident Stream</div>
+                <div className="flex items-center gap-1.5 bg-red-50 px-2 py-1 rounded-md border border-red-100">
+                  <div className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" />
+                  <span className="text-red-700 font-semibold text-xs uppercase tracking-wider">Live</span>
                 </div>
               </div>
 
               {/* Table header */}
-              <div className="flex items-center gap-3 px-3 py-1.5 border-b border-white/10 text-[10px] text-white/30 uppercase tracking-wider font-semibold mb-1">
+              <div className="flex items-center gap-3 px-3 py-2 border-b border-border text-[10px] text-text-secondary uppercase tracking-wider font-bold mb-1 bg-slate-50/50 rounded-t-lg">
                 <span className="w-2">·</span>
                 <span className="w-10">Time</span>
                 <span className="w-32">Type</span>
@@ -100,13 +100,13 @@ export default function FraudOpsCenter() {
           {/* Right 40% */}
           <div className="col-span-2 flex flex-col gap-5">
             {/* India Risk Heatmap */}
-            <div className="glass-card p-5">
-              <div className="text-white font-semibold text-sm mb-4">India Region Risk</div>
-              <div className="flex flex-col gap-2">
+            <div className="card p-5">
+              <div className="text-corporate font-bold text-lg mb-4">India Region Risk</div>
+              <div className="flex flex-col gap-3">
                 {INDIA_REGIONS.map((r) => (
                   <div key={r.name} className="flex items-center gap-3">
-                    <span className="text-white/60 text-xs w-20 truncate">{r.name}</span>
-                    <div className="flex-1 h-2 bg-white/10 rounded-full overflow-hidden">
+                    <span className="text-text-secondary text-sm font-medium w-24 truncate">{r.name}</span>
+                    <div className="flex-1 h-2.5 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${r.risk}%` }}
@@ -114,18 +114,18 @@ export default function FraudOpsCenter() {
                         className="h-full rounded-full"
                         style={{
                           backgroundColor:
-                            r.risk >= 70 ? '#B71C1C' : r.risk >= 50 ? '#E65100' : '#1B7E3A',
+                            r.risk >= 70 ? 'var(--color-risk-high)' : r.risk >= 50 ? 'var(--color-risk-medium)' : 'var(--color-risk-low)',
                         }}
                       />
                     </div>
-                    <span className="text-white/40 text-[10px] w-8 text-right">{r.incidents}</span>
+                    <span className="text-text-secondary font-bold text-xs w-8 text-right">{r.incidents}</span>
                   </div>
                 ))}
               </div>
-              <div className="mt-3 text-[10px] text-white/20 flex items-center gap-3">
-                <span className="flex items-center gap-1"><span className="w-2 h-1 bg-red-700 rounded inline-block" />High</span>
-                <span className="flex items-center gap-1"><span className="w-2 h-1 bg-orange-600 rounded inline-block" />Medium</span>
-                <span className="flex items-center gap-1"><span className="w-2 h-1 bg-green-800 rounded inline-block" />Low</span>
+              <div className="mt-4 text-[10px] font-bold uppercase tracking-wider text-text-secondary flex items-center justify-center gap-4 bg-slate-50 py-2 rounded-lg border border-slate-100">
+                <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full" style={{backgroundColor: 'var(--color-risk-high)'}} />High</span>
+                <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full" style={{backgroundColor: 'var(--color-risk-medium)'}} />Medium</span>
+                <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full" style={{backgroundColor: 'var(--color-risk-low)'}} />Low</span>
               </div>
             </div>
 

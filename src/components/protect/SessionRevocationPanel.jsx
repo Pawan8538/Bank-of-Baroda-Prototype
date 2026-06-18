@@ -20,41 +20,41 @@ export default function SessionRevocationPanel() {
   }, []);
 
   return (
-    <div className="glass-card p-5">
-      <div className="flex items-center justify-between mb-4">
-        <div className="text-white/60 text-xs uppercase tracking-wider font-semibold">Sessions Revoked</div>
+    <div className="card border-slate-200 bg-white p-6 shadow-sm">
+      <div className="flex items-center justify-between mb-5">
+        <div className="text-slate-500 text-[10px] uppercase tracking-widest font-bold">Sessions Revoked</div>
         <div className="flex items-center gap-2">
           <span
             ref={countRef}
-            className="text-2xl font-black text-red-400"
+            className="text-3xl font-black text-red-600 leading-none"
           >
             0
           </span>
-          <span className="text-white/30 text-sm">sessions</span>
+          <span className="text-slate-400 font-semibold text-xs uppercase tracking-wide">sessions</span>
         </div>
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         {SESSIONS.map((s, i) => (
           <motion.div
             key={s.id}
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6 + i * 0.2 }}
-            className="flex items-center gap-3 p-3 bg-red-950/30 border border-red-700/30 rounded-xl"
+            className="flex items-center gap-4 p-3.5 bg-red-50 border border-red-100 rounded-xl shadow-sm"
           >
-            <XCircle size={16} className="text-red-400 flex-shrink-0" />
+            <XCircle size={18} className="text-red-500 flex-shrink-0" />
             <div className="flex-1 min-w-0">
-              <div className="text-white/80 text-xs font-medium">{s.device}</div>
-              <div className="text-white/40 text-[10px]">{s.location} · {s.ip}</div>
+              <div className="text-corporate font-bold text-sm">{s.device}</div>
+              <div className="text-text-secondary font-medium text-[11px] mt-0.5">{s.location} · {s.ip}</div>
             </div>
-            <div className="text-red-400 text-[10px] font-bold uppercase">REVOKED</div>
+            <div className="text-red-600 text-[10px] font-black uppercase tracking-wider bg-red-100 px-2 py-1 rounded">REVOKED</div>
           </motion.div>
         ))}
       </div>
 
-      <div className="mt-3 p-2.5 bg-orange-900/20 border border-orange-700/30 rounded-lg">
-        <div className="text-orange-400 text-xs text-center">
+      <div className="mt-4 p-3 bg-orange-50 border border-orange-200 rounded-xl shadow-sm">
+        <div className="text-orange-700 text-xs font-semibold text-center uppercase tracking-wide">
           All JWT tokens invalidated · Sessions terminated
         </div>
       </div>

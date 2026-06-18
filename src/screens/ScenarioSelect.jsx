@@ -16,8 +16,8 @@ export default function ScenarioSelect({ onNavigate }) {
   };
 
   return (
-    <div className="min-h-full bg-bob-gradient px-8 py-10">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-full bg-background px-8 py-10">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -31,13 +31,13 @@ export default function ScenarioSelect({ onNavigate }) {
             </span>
           </div>
           <h1 className="section-title text-4xl">Choose a Scenario</h1>
-          <p className="section-subtitle mt-2">
+          <p className="section-subtitle mt-3">
             Three real-world account recovery attempts. One platform. Different outcomes.
           </p>
         </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-3 gap-6 mb-10">
+        <div className="grid grid-cols-3 gap-8 mb-12">
           {scenarios.scenarios.map((s, i) => (
             <ScenarioCard
               key={s.id}
@@ -50,34 +50,34 @@ export default function ScenarioSelect({ onNavigate }) {
 
         {/* Begin button */}
         <motion.div
-          className="flex justify-center"
-          animate={{ opacity: selected ? 1 : 0.3 }}
+          className="flex flex-col items-center justify-center"
+          animate={{ opacity: selected ? 1 : 0.4 }}
           transition={{ duration: 0.3 }}
         >
           <button
             onClick={handleBegin}
             disabled={!selected}
-            className={`flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-base transition-all
+            className={`flex items-center gap-2 px-10 py-4 rounded-xl font-bold text-lg transition-all shadow-sm
               ${selected
-                ? 'bg-primary text-white shadow-glow hover:bg-primary-dark'
-                : 'bg-white/10 text-white/30 cursor-not-allowed'
+                ? 'bg-primary text-white hover:bg-orange-600 hover:shadow-md'
+                : 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200'
               }
             `}
           >
             Begin Signal Collection
-            <ArrowRight size={18} />
+            <ArrowRight size={20} />
           </button>
+          
+          {selected && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center text-text-secondary font-medium text-sm mt-4"
+            >
+              Running: <span className="text-corporate font-bold">{scenarios.scenarios.find((s) => s.id === selected)?.name}</span> — {scenarios.scenarios.find((s) => s.id === selected)?.label}
+            </motion.p>
+          )}
         </motion.div>
-
-        {selected && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center text-white/30 text-xs mt-3"
-          >
-            Running: {scenarios.scenarios.find((s) => s.id === selected)?.name} — {scenarios.scenarios.find((s) => s.id === selected)?.label}
-          </motion.p>
-        )}
       </div>
     </div>
   );

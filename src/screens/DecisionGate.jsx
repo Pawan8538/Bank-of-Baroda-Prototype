@@ -29,16 +29,13 @@ export default function DecisionGate({ scenarioId = 'A', onNavigate }) {
 
   return (
     <div
-      className="min-h-full flex flex-col items-center justify-center px-8 py-12 relative overflow-hidden"
-      style={{
-        background: `radial-gradient(ellipse at center, ${cfg.hex}12 0%, #0F2044 60%)`,
-      }}
+      className="min-h-full flex flex-col items-center justify-center px-8 py-12 relative overflow-hidden bg-background"
     >
       {/* Background glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `radial-gradient(circle at 50% 50%, ${cfg.hex}08 0%, transparent 70%)`,
+          background: `radial-gradient(circle at 50% 50%, ${cfg.hex}15 0%, transparent 60%)`,
         }}
       />
 
@@ -47,9 +44,9 @@ export default function DecisionGate({ scenarioId = 'A', onNavigate }) {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-2"
+          className="flex items-center justify-center gap-2"
         >
-          <Zap size={16} className="text-primary" />
+          <Zap size={20} className="text-primary" />
           <span className="text-primary text-xs font-bold tracking-widest uppercase">
             ICE Decision Output
           </span>
@@ -63,10 +60,10 @@ export default function DecisionGate({ scenarioId = 'A', onNavigate }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="glass-card p-5 flex items-start gap-3 text-left"
+          className="card p-6 flex items-start gap-4 text-left shadow-md border-slate-200"
         >
-          <Info size={16} className="text-white/40 mt-0.5 flex-shrink-0" />
-          <p className="text-white/70 text-sm leading-relaxed">
+          <Info size={20} className="text-slate-400 mt-0.5 flex-shrink-0" />
+          <p className="text-text-secondary font-medium text-sm leading-relaxed">
             {DESCRIPTIONS[scenario.decision]?.(scenario.name) || ''}
           </p>
         </motion.div>
@@ -76,23 +73,23 @@ export default function DecisionGate({ scenarioId = 'A', onNavigate }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7 }}
-          className="flex items-center gap-4"
+          className="flex items-center gap-6 card p-4 w-full justify-center bg-slate-50 border-slate-100"
         >
           <div className="text-center">
-            <div className="text-white/30 text-xs">Trust Score</div>
-            <div className="text-2xl font-black" style={{ color: cfg.hex }}>
+            <div className="text-text-secondary/60 font-bold uppercase tracking-widest text-[10px] mb-1">Trust Score</div>
+            <div className="text-3xl font-black leading-none" style={{ color: cfg.hex }}>
               {scenario.trustScore}
             </div>
           </div>
-          <div className="w-px h-10 bg-white/10" />
+          <div className="w-px h-12 bg-slate-200" />
           <div className="text-center">
-            <div className="text-white/30 text-xs">User</div>
-            <div className="text-white font-semibold text-sm">{scenario.name}</div>
+            <div className="text-text-secondary/60 font-bold uppercase tracking-widest text-[10px] mb-1">User</div>
+            <div className="text-corporate font-bold text-base leading-none">{scenario.name}</div>
           </div>
-          <div className="w-px h-10 bg-white/10" />
+          <div className="w-px h-12 bg-slate-200" />
           <div className="text-center">
-            <div className="text-white/30 text-xs">Decision</div>
-            <div className="text-sm font-bold" style={{ color: cfg.hex }}>
+            <div className="text-text-secondary/60 font-bold uppercase tracking-widest text-[10px] mb-1">Decision</div>
+            <div className="text-base font-black leading-none uppercase tracking-wide" style={{ color: cfg.hex }}>
               {scenario.decision}
             </div>
           </div>
@@ -104,7 +101,7 @@ export default function DecisionGate({ scenarioId = 'A', onNavigate }) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.9, type: 'spring' }}
           onClick={() => onNavigate(NEXT_ROUTES[scenario.decision] || 'select', scenarioId)}
-          className="btn-primary flex items-center gap-2 text-base px-8 py-4 w-full justify-center"
+          className="btn-primary flex items-center gap-3 text-lg px-10 py-4 w-full justify-center shadow-sm"
         >
           {BUTTON_LABELS[scenario.decision]}
         </motion.button>

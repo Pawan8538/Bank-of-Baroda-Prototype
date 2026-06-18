@@ -1,89 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Shield, Eye, Bell, RefreshCw, Zap } from 'lucide-react';
-import ConfidenceGauge from '@/components/identity/ConfidenceGauge';
-import StatCard from '@/components/scenarios/StatCard';
-
-// ─── Cursor Line Effect ───────────────────────────────────────────────────────
-function CursorLineEffect() {
-  const canvasRef = useRef(null);
-  const mouse = useRef({ x: -1000, y: -1000 });
-  const lines = useRef([]);
-  const animRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    resize();
-    window.addEventListener('resize', resize);
-
-    // Spawn a new line from cursor every 60ms
-    const spawn = () => {
-      const { x, y } = mouse.current;
-      if (x < 0) return;
-      const angle = Math.random() * Math.PI * 2;
-      const speed = 0.4 + Math.random() * 0.8;
-      const len = 40 + Math.random() * 80;
-      lines.current.push({
-        x, y,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        len,
-        life: 1,
-        decay: 0.012 + Math.random() * 0.012,
-        hue: Math.random() < 0.7 ? 22 : 210, // orange or blue
-      });
-    };
-    const spawnInterval = setInterval(spawn, 60);
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      lines.current = lines.current.filter((l) => l.life > 0);
-
-      for (const l of lines.current) {
-        const alpha = l.life * 0.6;
-        const colour = l.hue === 22
-          ? `rgba(212, 80, 10, ${alpha})`
-          : `rgba(43, 87, 151, ${alpha})`;
-
-        ctx.beginPath();
-        ctx.moveTo(l.x, l.y);
-        ctx.lineTo(l.x + l.vx * l.len * l.life, l.y + l.vy * l.len * l.life);
-        ctx.strokeStyle = colour;
-        ctx.lineWidth = 1.5 * l.life;
-        ctx.lineCap = 'round';
-        ctx.stroke();
-
-        l.x += l.vx;
-        l.y += l.vy;
-        l.life -= l.decay;
-      }
-
-      animRef.current = requestAnimationFrame(draw);
-    };
-    draw();
-
-    const onMove = (e) => {
-      mouse.current = { x: e.clientX, y: e.clientY };
-    };
-    window.addEventListener('mousemove', onMove);
-
-    return () => {
-      window.removeEventListener('resize', resize);
-      window.removeEventListener('mousemove', onMove);
-      clearInterval(spawnInterval);
-      cancelAnimationFrame(animRef.current);
-    };
-  }, []);
-
-  return <canvas ref={canvasRef} id="cursor-canvas" />;
-}
+import { ArrowRight, Shield, Eye, Bell, RefreshCw, Zap, Fingerprint, Lock, Activity } from 'lucide-react';
+import ParticleNetwork from '@/components/global/ParticleNetwork';
 
 // ─── Pillars strip ────────────────────────────────────────────────────────────
 const pillars = [
@@ -105,64 +23,51 @@ const item = {
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function Landing({ onNavigate }) {
   return (
-    <div className="relative min-h-full bg-bob-gradient flex flex-col overflow-hidden">
-      <CursorLineEffect />
+    <div className="relative min-h-full bg-background flex flex-col overflow-hidden">
+      <ParticleNetwork />
 
       {/* Hero */}
-      <div className="relative z-10 flex-1 grid grid-cols-2 gap-0 items-center px-12 py-12 max-w-7xl mx-auto w-full">
+      <div className="relative z-10 flex-1 grid grid-cols-2 gap-12 items-center px-16 py-12 max-w-[1400px] mx-auto w-full">
         {/* Left copy */}
         <div className="flex flex-col gap-6">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-4 py-1.5 w-fit"
-          >
-            <Zap size={13} className="text-primary" />
-            <span className="text-primary text-xs font-bold tracking-wider uppercase">
-              Bank of Baroda × IIT-GN Hackathon 2026
-            </span>
-          </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="text-5xl font-black leading-tight"
+            className="text-6xl font-black leading-tight text-corporate"
           >
-            <span className="text-white">Stop Fraud</span>
-            <br />
-            <span className="text-gradient-primary">Before It Starts.</span>
+            Trust Every Recovery.<br />
+            <span className="text-gradient-primary">Block Every Imposter.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.25, duration: 0.6 }}
-            className="text-white/60 text-lg leading-relaxed max-w-md"
+            className="text-text-secondary text-xl leading-relaxed max-w-lg"
           >
-            AI-Powered Identity Trust Platform — detecting account recovery fraud
-            in real-time with zero friction for legitimate users.
+            AI-powered identity trust platform protecting account recovery journeys through detection, prevention, response and recovery intelligence.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="flex items-center gap-4"
+            className="flex items-center gap-6 mt-4"
           >
             <button
               onClick={() => onNavigate('select')}
-              className="btn-primary flex items-center gap-2 text-base px-8 py-4"
+              className="btn-primary text-lg px-8 py-4 shadow-md"
             >
-              Begin Demo
-              <ArrowRight size={18} />
+              Start Demo
+              <ArrowRight size={20} />
             </button>
             <button
-              onClick={() => onNavigate('overview')}
-              className="btn-outline flex items-center gap-2 text-sm"
+              onClick={() => onNavigate('architecture')}
+              className="btn-outline text-lg px-8 py-4"
             >
-              Platform Overview
+              View Architecture
             </button>
           </motion.div>
 
@@ -171,33 +76,75 @@ export default function Landing({ onNavigate }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="flex items-center gap-8 pt-4 border-t border-white/10"
+            className="flex items-center gap-10 pt-8 mt-4 border-t border-border"
           >
-            <StatCard value={2400} prefix="₹" suffix=" Cr" label="Annual Fraud Losses" colour="#D4500A" />
-            <StatCard value={3} suffix="×" label="YoY Growth in Attacks" colour="#E65100" />
-            <StatCard value={17} suffix=" days" label="Avg Detection Time" colour="#B71C1C" />
+            <div className="flex flex-col gap-1">
+              <div className="text-3xl font-black text-corporate">₹2,400 <span className="text-xl">Cr</span></div>
+              <div className="text-xs font-semibold text-text-secondary uppercase tracking-wider">Annual Fraud Losses</div>
+            </div>
+            <div className="w-px h-12 bg-border"></div>
+            <div className="flex flex-col gap-1">
+              <div className="text-3xl font-black text-primary">3×</div>
+              <div className="text-xs font-semibold text-text-secondary uppercase tracking-wider">YoY Growth</div>
+            </div>
+            <div className="w-px h-12 bg-border"></div>
+            <div className="flex flex-col gap-1">
+              <div className="text-3xl font-black text-corporate-light">17 <span className="text-xl">days</span></div>
+              <div className="text-xs font-semibold text-text-secondary uppercase tracking-wider">Avg Detection Time</div>
+            </div>
           </motion.div>
         </div>
 
-        {/* Right: gauge */}
+        {/* Right: Premium SVG Illustration */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-          className="flex flex-col items-center justify-center gap-4"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="flex items-center justify-center relative h-full w-full"
         >
-          <div className="relative">
-            {/* Glow ring */}
-            <div
-              className="absolute inset-[-20px] rounded-full opacity-20 blur-2xl"
-              style={{ backgroundColor: '#D4500A' }}
-            />
-            <ConfidenceGauge score={94} size={240} animated />
-          </div>
+          {/* Abstract SVG Background */}
+          <svg viewBox="0 0 500 500" className="absolute w-full h-full opacity-5 pointer-events-none">
+            <circle cx="250" cy="250" r="200" fill="none" stroke="#0F2044" strokeWidth="1" strokeDasharray="4 12" />
+            <circle cx="250" cy="250" r="140" fill="none" stroke="#0F2044" strokeWidth="1" strokeDasharray="4 12" />
+            <circle cx="250" cy="250" r="80" fill="none" stroke="#0F2044" strokeWidth="1" strokeDasharray="4 12" />
+          </svg>
 
-          <div className="text-center mt-2">
-            <div className="text-white/40 text-sm">Identity Confidence Engine</div>
-            <div className="text-white/60 text-xs mt-1">Real-time · Explainable · Zero-Friction</div>
+          {/* Main Illustration Assembly */}
+          <div className="relative z-10 w-80 h-80 bg-surface rounded-full shadow-2xl flex items-center justify-center border-8 border-background">
+            <div className="absolute inset-0 rounded-full border border-border"></div>
+            <Shield size={120} className="text-primary" strokeWidth={1} />
+            <div className="absolute flex items-center justify-center">
+              <Fingerprint size={60} className="text-primary opacity-80" strokeWidth={1.5} />
+            </div>
+
+            {/* Floating Elements */}
+            <motion.div 
+              animate={{ y: [-10, 10, -10] }} 
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+              className="absolute -top-6 -right-6 card p-4 flex items-center gap-3"
+            >
+              <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+                <Lock size={20} />
+              </div>
+              <div>
+                <div className="text-xs text-text-secondary">Identity Status</div>
+                <div className="font-bold text-corporate">Verified Secure</div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              animate={{ y: [10, -10, 10] }} 
+              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+              className="absolute -bottom-6 -left-6 card p-4 flex items-center gap-3"
+            >
+              <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-corporate-light">
+                <Activity size={20} />
+              </div>
+              <div>
+                <div className="text-xs text-text-secondary">Trust Score</div>
+                <div className="font-bold text-corporate text-xl leading-none">94<span className="text-sm text-text-secondary font-normal">/100</span></div>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>
@@ -207,21 +154,20 @@ export default function Landing({ onNavigate }) {
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 grid grid-cols-4 gap-4 px-12 pb-12 max-w-7xl mx-auto w-full"
+        className="relative z-10 grid grid-cols-4 gap-8 px-16 pb-16 max-w-[1400px] mx-auto w-full"
       >
         {pillars.map(({ icon: Icon, label, desc }) => (
           <motion.div
             key={label}
             variants={item}
-            whileHover={{ y: -4 }}
-            className="glass-card p-5 flex flex-col items-center gap-3 text-center cursor-default"
+            className="card p-6 flex flex-col items-start gap-4 cursor-default"
           >
-            <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
-              <Icon size={22} className="text-primary" strokeWidth={1.5} />
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+              <Icon size={24} className="text-primary" strokeWidth={2} />
             </div>
             <div>
-              <div className="text-white font-bold text-sm">{label}</div>
-              <div className="text-white/40 text-xs">{desc}</div>
+              <div className="text-corporate font-bold text-lg mb-1">{label}</div>
+              <div className="text-text-secondary text-sm">{desc}</div>
             </div>
           </motion.div>
         ))}

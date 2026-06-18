@@ -32,28 +32,37 @@ function ImpactStat({ impact }) {
 
 export default function BusinessImpact({ onNavigate }) {
   return (
-    <div className="min-h-full bg-bob-gradient px-8 py-12 flex flex-col">
-      <div className="max-w-5xl mx-auto flex-1 flex flex-col">
+    <div className="min-h-full bg-background px-8 py-12 flex flex-col">
+      <div className="max-w-6xl mx-auto flex-1 flex flex-col">
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-3">
-            <TrendingUp size={18} className="text-primary" />
+            <TrendingUp size={20} className="text-primary" />
             <span className="text-primary text-xs font-bold tracking-widest uppercase">Business Impact</span>
           </div>
-          <h1 className="text-5xl font-black text-white mb-4">
-            Real Results for <span className="text-gradient-primary">Real People</span>
+          <h1 className="text-5xl font-black text-corporate mb-4">
+            Real Results for <span className="text-primary">Real People</span>
           </h1>
-          <p className="text-white/60 text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-text-secondary text-lg font-medium max-w-2xl mx-auto leading-relaxed">
             The Identity Trust Platform stops fraud before it happens — without adding friction
             for the 94% of users who are legitimate.
           </p>
         </motion.div>
 
         {/* Impact stats */}
-        <div className="grid grid-cols-2 gap-5 mb-10 flex-1">
+        <div className="grid grid-cols-2 gap-8 mb-12 flex-1">
           {impacts.map((impact, i) => (
-            <motion.div key={impact.label} transition={{ delay: i * 0.15 }}>
-              <ImpactStat impact={impact} />
+            <motion.div key={impact.label} transition={{ delay: i * 0.15 }} className="h-full">
+              <div className="card bg-white border border-slate-200 shadow-sm hover:shadow-md hover:bg-slate-50 transition-all p-8 flex flex-col items-center justify-center text-center gap-4 h-full">
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-white shadow-sm"
+                  style={{ border: `1px solid ${impact.colour}30`, boxShadow: `0 2px 8px ${impact.colour}15` }}>
+                  <impact.icon size={30} style={{ color: impact.colour }} strokeWidth={2} />
+                </div>
+                <div className="text-5xl font-black mt-2" style={{ color: impact.colour }}>
+                  <span ref={useAnimatedCounter(impact.value, { suffix: impact.suffix, localize: impact.value > 1000 }).ref}>0</span>
+                </div>
+                <div className="text-text-secondary font-semibold text-sm leading-snug max-w-[80%]">{impact.label}</div>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -63,23 +72,23 @@ export default function BusinessImpact({ onNavigate }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7 }}
-          className="glass-card p-8 text-center mb-8 border border-primary/20"
+          className="card bg-slate-50 border border-slate-200 p-8 text-center mb-10 shadow-sm"
         >
-          <p className="text-white/80 text-lg italic leading-relaxed">
+          <p className="text-corporate font-semibold text-xl italic leading-relaxed max-w-3xl mx-auto">
             "Protecting 50 million customers at the moment of highest vulnerability —
             not with more friction, but with more intelligence."
           </p>
-          <div className="text-primary/60 text-sm mt-3 font-semibold">
+          <div className="text-text-secondary/60 text-[10px] font-black uppercase tracking-widest mt-5">
             — Identity Trust Platform · Bank of Baroda × IIT-GN 2026
           </div>
         </motion.div>
 
         {/* Navigation */}
-        <div className="flex justify-center gap-4">
-          <button onClick={() => onNavigate('select')} className="btn-outline flex items-center gap-2">
-            <ArrowLeft size={16} /> Run Demo Again
+        <div className="flex justify-center gap-6 pb-8">
+          <button onClick={() => onNavigate('select')} className="btn-outline flex items-center gap-3 px-8 py-4 text-lg">
+            <ArrowLeft size={20} strokeWidth={2.5} /> Run Demo Again
           </button>
-          <button onClick={() => onNavigate('landing')} className="btn-primary flex items-center gap-2">
+          <button onClick={() => onNavigate('landing')} className="btn-primary flex items-center gap-3 px-8 py-4 text-lg shadow-sm">
             Back to Home
           </button>
         </div>

@@ -8,7 +8,7 @@ export default function AppShell({ currentScreen, onNavigate, children }) {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <div className="flex flex-col h-screen w-screen overflow-hidden bg-navy">
+    <div className="flex flex-col h-screen w-screen overflow-hidden bg-background">
       {/* Top Bar */}
       <BoBLogoBar onNavigate={onNavigate} />
 
@@ -18,7 +18,7 @@ export default function AppShell({ currentScreen, onNavigate, children }) {
         <motion.aside
           animate={{ width: collapsed ? 56 : 220 }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          className="flex-shrink-0 flex flex-col bg-navy/90 border-r border-white/10 overflow-hidden relative"
+          className="flex-shrink-0 flex flex-col bg-surface border-r border-border overflow-hidden relative shadow-sm z-10"
         >
           <div className="flex-1 overflow-y-auto overflow-x-hidden">
             <SidebarNav
@@ -29,10 +29,10 @@ export default function AppShell({ currentScreen, onNavigate, children }) {
           </div>
 
           {/* Collapse toggle */}
-          <div className="p-2 border-t border-white/10">
+          <div className="p-2 border-t border-border bg-surface">
             <button
               onClick={() => setCollapsed(!collapsed)}
-              className="w-full flex items-center justify-center p-2 rounded-lg text-white/30 hover:text-white/60 hover:bg-white/5 transition-all"
+              className="w-full flex items-center justify-center p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-background transition-all"
               title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
             >
               {collapsed ? <PanelLeftOpen size={16} /> : <PanelLeftClose size={16} />}

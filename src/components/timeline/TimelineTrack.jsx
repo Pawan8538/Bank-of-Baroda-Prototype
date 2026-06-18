@@ -15,7 +15,7 @@ export default function TimelineTrack({ events = [], selectedId, onSelect }) {
       {/* Vertical line */}
       <div
         ref={lineRef}
-        className="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-navy-600 to-transparent"
+        className="absolute left-3 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-slate-300 to-transparent rounded-full"
         style={{ transformOrigin: 'top center' }}
       />
 

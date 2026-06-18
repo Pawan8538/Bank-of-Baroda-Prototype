@@ -18,12 +18,25 @@ import ArchitectureScreen from '@/screens/ArchitectureScreen';
 import BusinessImpact from '@/screens/BusinessImpact';
 
 export default function App() {
-  const [screen, setScreen] = useState('landing');
+  const [screen, setScreen] = useState(() => {
+    const hash = window.location.hash.replace('#', '');
+    return hash || 'landing';
+  });
   const [scenarioId, setScenarioId] = useState(null);
+
+  React.useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash) setScreen(hash);
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   const navigate = useCallback((nextScreen, nextScenarioId) => {
     if (nextScenarioId !== undefined) setScenarioId(nextScenarioId);
     setScreen(nextScreen);
+    window.location.hash = nextScreen;
     window.scrollTo(0, 0);
   }, []);
 

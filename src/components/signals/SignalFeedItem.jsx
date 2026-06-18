@@ -19,17 +19,17 @@ export default function SignalFeedItem({ signal, index = 0 }) {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.35, ease: 'easeOut' }}
-      className="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-xl"
+      className="flex items-center gap-4 p-4 card hover:bg-slate-50 cursor-default"
     >
       {/* Icon */}
-      <div className="w-10 h-10 rounded-xl bg-navy-700 flex items-center justify-center flex-shrink-0">
-        <Icon size={18} className="text-white/60" strokeWidth={1.5} />
+      <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0 border border-slate-200">
+        <Icon size={20} className="text-slate-500" strokeWidth={1.5} />
       </div>
 
       {/* Info */}
       <div className="flex-1 min-w-0">
-        <div className="text-white text-sm font-semibold">{signal.name}</div>
-        <div className="text-white/50 text-xs mt-0.5 truncate">{signal.value}</div>
+        <div className="text-corporate text-sm font-bold">{signal.name}</div>
+        <div className="text-text-secondary text-xs mt-0.5 truncate font-medium">{signal.value}</div>
       </div>
 
       {/* Status badge */}
@@ -40,7 +40,7 @@ export default function SignalFeedItem({ signal, index = 0 }) {
       {/* Status dot */}
       <div
         className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-        style={{ backgroundColor: cfg.dot, boxShadow: `0 0 6px ${cfg.dot}` }}
+        style={{ backgroundColor: cfg.dot, boxShadow: `0 0 6px ${cfg.dot}60` }}
       />
     </motion.div>
   );

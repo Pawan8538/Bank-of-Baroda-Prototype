@@ -21,30 +21,35 @@ export default function KPICard({ kpi, delay = 0 }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.4 }}
-      className={`glass-card p-5 border ${cfg.border} ${cfg.bg}`}
+      className="card p-6 flex flex-col justify-between"
     >
-      <div className="text-white/50 text-xs uppercase tracking-wider font-semibold mb-3">
+      <div className="text-text-secondary text-xs uppercase tracking-widest font-bold mb-4">
         {kpi.label}
       </div>
-      <div className="flex items-end gap-2">
-        <span
-          ref={ref}
-          className="text-3xl font-black"
-          style={{ color: cfg.hex }}
-        >
-          0
-        </span>
+      <div>
+        <div className="flex items-end gap-3 mb-2">
+          <span
+            ref={ref}
+            className="text-4xl font-black"
+            style={{ color: cfg.hex }}
+          >
+            0
+          </span>
+        </div>
+        
         {kpi.delta && (
-          <div className={`flex items-center gap-0.5 text-xs font-semibold mb-1
-            ${isPositiveDelta ? 'text-red-400' : isNegativeDelta ? 'text-green-400' : 'text-white/40'}
-          `}>
-            {isPositiveDelta && <TrendingUp size={12} />}
-            {isNegativeDelta && <TrendingDown size={12} />}
-            {kpi.delta}
+          <div className="flex items-center gap-2">
+            <div className={`flex items-center gap-1 text-xs font-bold px-2 py-0.5 rounded-md
+              ${isPositiveDelta ? 'text-red-700 bg-red-50' : isNegativeDelta ? 'text-green-700 bg-green-50' : 'text-slate-600 bg-slate-100'}
+            `}>
+              {isPositiveDelta && <TrendingUp size={12} strokeWidth={3} />}
+              {isNegativeDelta && <TrendingDown size={12} strokeWidth={3} />}
+              {kpi.delta}
+            </div>
+            <div className="text-text-secondary/60 text-[10px] font-medium uppercase">vs. last week</div>
           </div>
         )}
       </div>
-      <div className="text-white/20 text-[10px] mt-1">vs. previous 24h</div>
     </motion.div>
   );
 }

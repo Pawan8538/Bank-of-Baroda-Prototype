@@ -1,0 +1,177 @@
+@import "tailwindcss";
+@source "./index.html";
+@source "./src/**/*.{js,jsx}";
+
+/* ─── Tailwind v4 Theme Tokens ─────────────────────────────────────────────── */
+@theme {
+  /* Bank of Baroda Brand Colors */
+  --color-primary: #F15A29;
+  --color-primary-dark: #D94A1A;
+  
+  --color-corporate: #0F2044;
+  --color-corporate-light: #1A3560;
+
+  /* Neutrals */
+  --color-background: #F8FAFC;
+  --color-surface: #FFFFFF;
+  
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  
+  --color-border: #E2E8F0;
+
+  /* Risk Colors */
+  --color-risk-low: #16A34A;
+  --color-risk-medium: #F59E0B;
+  --color-risk-high: #DC2626;
+  --color-risk-critical: #991B1B;
+
+  /* Fonts */
+  --font-sans: 'Inter', 'Manrope', 'IBM Plex Sans', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Box shadows */
+  --shadow-card: 0 1px 3px rgba(0,0,0,.05);
+  --shadow-card-hover: 0 10px 25px rgba(0,0,0,.08);
+}
+
+/* ─── Base Styles ────────────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #F8FAFC;
+    color: #0F172A;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #F8FAFC; }
+  ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+}
+
+/* ─── Utility & Component Classes ────────────────────────────────────── */
+@layer components {
+  .card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.05);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+  }
+
+  .btn-primary {
+    background-color: #F15A29;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-primary:hover {
+    background-color: #D94A1A;
+  }
+
+  .btn-primary:active {
+    transform: scale(0.97);
+  }
+
+  .btn-outline {
+    border: 1px solid #E2E8F0;
+    color: #0F172A;
+    background-color: #FFFFFF;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  }
+
+  .btn-outline:hover {
+    background-color: #F8FAFC;
+    border-color: #CBD5E1;
+  }
+
+  .btn-outline:active {
+    transform: scale(0.97);
+  }
+
+  .section-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #0F2044;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-subtitle {
+    color: #475569;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .text-gradient-primary {
+    background: linear-gradient(to right, #F15A29, #D94A1A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Signal status classes */
+  .signal-status-trusted,
+  .signal-status-stable,
+  .signal-status-normal {
+    color: #16A34A;
+    background-color: rgba(22, 163, 74, 0.1);
+    border-color: rgba(22, 163, 74, 0.2);
+  }
+
+  .signal-status-unknown,
+  .signal-status-elevated {
+    color: #F59E0B;
+    background-color: rgba(245, 158, 11, 0.1);
+    border-color: rgba(245, 158, 11, 0.2);
+  }
+
+  .signal-status-swapped,
+  .signal-status-critical {
+    color: #DC2626;
+    background-color: rgba(220, 38, 38, 0.1);
+    border-color: rgba(220, 38, 38, 0.2);
+  }
+}
+
+/* Cursor canvas */
+#cursor-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}

@@ -25,22 +25,22 @@ export default function FactorBar({ name, score, weight, delay = 0 }) {
       className="flex flex-col gap-1.5"
     >
       <div className="flex items-center justify-between text-xs">
-        <span className="text-white/80 font-medium">{name}</span>
+        <span className="text-corporate font-bold text-sm">{name}</span>
         <div className="flex items-center gap-2">
-          <span className="text-white/40">weight {weight}%</span>
-          <span className="font-bold" style={{ color: colours.hex }}>
+          <span className="text-text-secondary/60 font-semibold uppercase tracking-wider text-[10px]">weight {weight}%</span>
+          <span className="font-bold text-sm" style={{ color: colours.hex }}>
             {score}
           </span>
         </div>
       </div>
-      <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+      <div className="h-2 bg-slate-200 rounded-full overflow-hidden border border-slate-300">
         <div
           ref={barRef}
           className="h-full rounded-full"
           style={{
             width: '0%',
             backgroundColor: colours.hex,
-            boxShadow: `0 0 8px ${colours.hex}60`,
+            boxShadow: `0 0 8px ${colours.hex}40`,
           }}
         />
       </div>

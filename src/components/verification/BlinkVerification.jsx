@@ -30,7 +30,7 @@ export default function BlinkVerification({ onVerified }) {
         {/* Outer ring */}
         <svg className="absolute inset-0 w-full h-full rotate-[-90deg]" viewBox="0 0 120 120">
           {/* Background ring */}
-          <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="3" />
+          <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(15,32,68,0.1)" strokeWidth="3" />
           {/* Progress ring */}
           <circle
             ref={ringRef}
@@ -46,7 +46,7 @@ export default function BlinkVerification({ onVerified }) {
         </svg>
 
         {/* Face oval */}
-        <div className="absolute inset-4 rounded-full border-2 border-primary/50 overflow-hidden bg-navy-700/50 flex items-center justify-center">
+        <div className="absolute inset-4 rounded-full border border-slate-200 overflow-hidden bg-slate-50 flex items-center justify-center shadow-inner">
           {/* Scan line animation */}
           {phase === 'scanning' && (
             <motion.div
@@ -63,20 +63,20 @@ export default function BlinkVerification({ onVerified }) {
                 initial={{ scale: 0 }}
                 animate={{ scale: [0, 1.2, 1] }}
                 transition={{ type: 'spring', stiffness: 300 }}
-                className="flex flex-col items-center gap-1"
+                className="flex flex-col items-center gap-2"
               >
-                <CheckCircle2 size={40} className="text-green-400" />
-                <span className="text-green-400 text-xs font-bold">VERIFIED</span>
+                <CheckCircle2 size={44} className="text-green-600" />
+                <span className="text-green-700 text-xs font-black tracking-widest uppercase">Verified</span>
               </motion.div>
             ) : (
               <motion.div
                 key="face"
-                className="flex flex-col items-center gap-1"
+                className="flex flex-col items-center gap-2"
                 animate={{ scale: phase === 'scanning' ? [0.98, 1.02, 0.98] : 1 }}
                 transition={{ duration: 1.5, repeat: phase === 'scanning' ? Infinity : 0 }}
               >
-                <Eye size={24} className="text-white/30" />
-                <span className="text-white/30 text-xs">
+                <Eye size={28} className="text-slate-400" />
+                <span className="text-slate-500 text-[10px] font-bold uppercase tracking-widest text-center px-4">
                   {phase === 'idle' ? 'Position face here' : 'Scanning...'}
                 </span>
               </motion.div>
@@ -86,8 +86,8 @@ export default function BlinkVerification({ onVerified }) {
       </div>
 
       {/* Instruction */}
-      <div className="text-center">
-        <p className="text-white/70 text-sm font-medium">
+      <div className="text-center px-4">
+        <p className="text-corporate text-sm font-semibold leading-relaxed">
           {phase === 'idle' && 'Please blink naturally to verify your presence'}
           {phase === 'scanning' && 'Liveness check in progress...'}
           {phase === 'done' && '✓ Liveness Confirmed — Proceeding...'}
@@ -102,7 +102,7 @@ export default function BlinkVerification({ onVerified }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             onClick={handleSimulate}
-            className="btn-primary"
+            className="btn-primary w-full max-w-[200px]"
           >
             Simulate Blink →
           </motion.button>

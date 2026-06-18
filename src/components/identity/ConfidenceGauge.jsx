@@ -49,7 +49,7 @@ export default function ConfidenceGauge({ score = 0, size = 200, animated = true
             cy={cy}
             r={RADIUS}
             fill="none"
-            stroke="rgba(255,255,255,0.08)"
+            stroke="rgba(15,32,68,0.08)"
             strokeWidth={strokeW}
             strokeLinecap="round"
           />
@@ -73,22 +73,22 @@ export default function ConfidenceGauge({ score = 0, size = 200, animated = true
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <span
             ref={numberRef}
-            className="text-white font-bold leading-none"
+            className="text-corporate font-bold leading-none"
             style={{ fontSize: svgSize * 0.22 }}
           >
             {animated ? 0 : score}
           </span>
-          <span className="text-white/50 font-medium mt-1" style={{ fontSize: svgSize * 0.07 }}>
+          <span className="text-text-secondary font-medium mt-1" style={{ fontSize: svgSize * 0.07 }}>
             / 100
           </span>
         </div>
       </div>
 
       <div className="text-center">
-        <div className="text-white/60 text-xs font-medium uppercase tracking-wider">{label}</div>
+        <div className="text-text-secondary/80 text-xs font-bold uppercase tracking-wider">{label}</div>
         <div
-          className="text-xs font-bold mt-0.5 px-3 py-0.5 rounded-full"
-          style={{ color: colours.hex, backgroundColor: colours.hex + '20', border: `1px solid ${colours.hex}40` }}
+          className="text-xs font-bold mt-1 px-3 py-0.5 rounded-full inline-block"
+          style={{ color: colours.hex, backgroundColor: colours.hex + '15', border: `1px solid ${colours.hex}30` }}
         >
           {score >= 75 ? 'LOW RISK' : score >= 45 ? 'MEDIUM RISK' : 'HIGH RISK'}
         </div>

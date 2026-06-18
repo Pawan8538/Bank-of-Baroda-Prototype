@@ -46,7 +46,7 @@ export default function SuccessOutcome({ scenarioId = 'A', onNavigate }) {
   }, [finalScore]);
 
   return (
-    <div className="min-h-full bg-bob-gradient flex flex-col items-center justify-center px-8 py-12 relative overflow-hidden">
+    <div className="min-h-full bg-background flex flex-col items-center justify-center px-8 py-12 relative overflow-hidden">
       <Confetti />
 
       <div className="relative z-10 flex flex-col items-center gap-8 max-w-lg w-full text-center">
@@ -55,10 +55,10 @@ export default function SuccessOutcome({ scenarioId = 'A', onNavigate }) {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: 'spring', stiffness: 300, damping: 20, bounce: 0.5, delay: 0.2 }}
-          className="w-32 h-32 rounded-full bg-green-900/30 border-2 border-green-500 flex items-center justify-center"
-          style={{ boxShadow: '0 0 60px rgba(27, 126, 58, 0.4)' }}
+          className="w-32 h-32 rounded-full bg-green-50 border-[3px] border-green-200 flex items-center justify-center"
+          style={{ boxShadow: '0 10px 40px rgba(27, 126, 58, 0.15)' }}
         >
-          <CheckCircle2 size={60} className="text-green-400" strokeWidth={1.5} />
+          <CheckCircle2 size={64} className="text-green-600" strokeWidth={2} />
         </motion.div>
 
         {/* Headline */}
@@ -67,10 +67,10 @@ export default function SuccessOutcome({ scenarioId = 'A', onNavigate }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <h1 className="text-4xl font-black text-white mb-2">
-            Recovery <span className="text-green-400">Successful</span>
+          <h1 className="text-4xl font-black text-corporate mb-3">
+            Recovery <span className="text-green-600">Successful</span>
           </h1>
-          <p className="text-white/60 text-base leading-relaxed">
+          <p className="text-text-secondary text-lg font-medium max-w-sm mx-auto leading-relaxed">
             {MESSAGES[scenarioId] || MESSAGES.A}
           </p>
         </motion.div>
@@ -80,21 +80,21 @@ export default function SuccessOutcome({ scenarioId = 'A', onNavigate }) {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.6 }}
-          className="glass-card p-6 w-full flex items-center justify-around"
+          className="card p-6 w-full flex items-center justify-around bg-white border-slate-200 shadow-sm"
         >
           <div className="text-center">
-            <div className="text-white/40 text-xs mb-1">Final Trust Score</div>
-            <div ref={scoreRef} className="text-4xl font-black text-green-400">0</div>
+            <div className="text-text-secondary/60 text-[10px] font-bold uppercase tracking-widest mb-1">Final Trust Score</div>
+            <div ref={scoreRef} className="text-4xl font-black text-green-600">0</div>
           </div>
-          <div className="w-px h-12 bg-white/10" />
+          <div className="w-px h-12 bg-slate-200" />
           <div className="text-center">
-            <div className="text-white/40 text-xs mb-1">User</div>
-            <div className="text-white font-bold">{scenario.name}</div>
+            <div className="text-text-secondary/60 text-[10px] font-bold uppercase tracking-widest mb-1">User</div>
+            <div className="text-corporate font-bold text-base">{scenario.name}</div>
           </div>
-          <div className="w-px h-12 bg-white/10" />
+          <div className="w-px h-12 bg-slate-200" />
           <div className="text-center">
-            <div className="text-white/40 text-xs mb-1">Scenario</div>
-            <div className="text-green-400 font-bold text-sm">{scenario.decision}</div>
+            <div className="text-text-secondary/60 text-[10px] font-bold uppercase tracking-widest mb-1">Scenario</div>
+            <div className="text-green-600 font-bold text-sm uppercase tracking-wide">{scenario.decision}</div>
           </div>
         </motion.div>
 
@@ -107,17 +107,17 @@ export default function SuccessOutcome({ scenarioId = 'A', onNavigate }) {
         >
           <button
             onClick={() => onNavigate('select')}
-            className="flex-1 btn-outline flex items-center justify-center gap-2"
+            className="flex-1 btn-outline flex items-center justify-center gap-3 py-3"
           >
-            <ArrowLeft size={16} />
+            <ArrowLeft size={18} strokeWidth={2.5} />
             Return to Scenarios
           </button>
           <button
             onClick={() => onNavigate('dashboard')}
-            className="flex-1 btn-primary flex items-center justify-center gap-2"
+            className="flex-1 btn-primary flex items-center justify-center gap-3 py-3"
           >
             View Dashboard
-            <BarChart3 size={16} />
+            <BarChart3 size={18} strokeWidth={2.5} />
           </button>
         </motion.div>
       </div>
