@@ -31,7 +31,7 @@ const layers = [
 
 export default function ArchitectureScreen({ onNavigate }) {
   return (
-    <div className="min-h-full bg-background px-8 py-10">
+    <div className="min-h-full bg-transparent px-8 py-10">
       <div className="max-w-6xl mx-auto">
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-3">

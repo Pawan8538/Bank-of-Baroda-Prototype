@@ -32,7 +32,7 @@ function ImpactStat({ impact }) {
 
 export default function BusinessImpact({ onNavigate }) {
   return (
-    <div className="min-h-full bg-background px-8 py-12 flex flex-col">
+    <div className="min-h-full bg-transparent px-8 py-12 flex flex-col">
       <div className="max-w-6xl mx-auto flex-1 flex flex-col">
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">

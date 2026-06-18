@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Shield, Eye, Bell, RefreshCw, Zap, Fingerprint, Lock, Activity } from 'lucide-react';
-import ParticleNetwork from '@/components/global/ParticleNetwork';
 
 // ─── Pillars strip ────────────────────────────────────────────────────────────
 const pillars = [
@@ -23,9 +22,7 @@ const item = {
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function Landing({ onNavigate }) {
   return (
-    <div className="relative min-h-full bg-background flex flex-col overflow-hidden">
-      <ParticleNetwork />
-
+    <div className="relative min-h-full bg-transparent flex flex-col overflow-hidden">
       {/* Hero */}
       <div className="relative z-10 flex-1 grid grid-cols-2 gap-12 items-center px-16 py-12 max-w-[1400px] mx-auto w-full">
         {/* Left copy */}

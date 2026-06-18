@@ -29,7 +29,7 @@ export default function DecisionGate({ scenarioId = 'A', onNavigate }) {
 
   return (
     <div
-      className="min-h-full flex flex-col items-center justify-center px-8 py-12 relative overflow-hidden bg-background"
+      className="min-h-full flex flex-col items-center justify-center px-8 py-12 relative overflow-hidden bg-transparent"
     >
       {/* Background glow */}
       <div

@@ -22,7 +22,7 @@ export default function SignalCollection({ scenarioId = 'A', onNavigate }) {
   }, [isComplete, scenarioId]);
 
   return (
-    <div className="min-h-full bg-background px-8 py-8">
+    <div className="min-h-full bg-transparent px-8 py-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div

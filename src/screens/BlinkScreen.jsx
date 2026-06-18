@@ -10,7 +10,7 @@ export default function BlinkScreen({ onNavigate }) {
   };
 
   return (
-    <div className="min-h-full bg-background flex flex-col items-center justify-center px-8 py-10">
+    <div className="min-h-full bg-transparent flex flex-col items-center justify-center px-8 py-10">
       <div className="max-w-3xl w-full text-center">
         {/* Header */}
         <motion.div

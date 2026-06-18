@@ -1173,6 +1173,9 @@
   .bg-surface {
     background-color: var(--color-surface);
   }
+  .bg-transparent {
+    background-color: transparent;
+  }
   .bg-white {
     background-color: var(--color-white);
   }

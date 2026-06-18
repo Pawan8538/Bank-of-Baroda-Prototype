@@ -3,17 +3,20 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import BoBLogoBar from './BoBLogoBar';
 import SidebarNav from './SidebarNav';
+import ParticleNetwork from './ParticleNetwork';
 
 export default function AppShell({ currentScreen, onNavigate, children }) {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <div className="flex flex-col h-screen w-screen overflow-hidden bg-background">
+    <div className="flex flex-col h-screen w-screen overflow-hidden bg-background relative">
+      <ParticleNetwork />
+      
       {/* Top Bar */}
       <BoBLogoBar onNavigate={onNavigate} />
 
       {/* Body */}
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden relative z-10">
         {/* Sidebar */}
         <motion.aside
           animate={{ width: collapsed ? 56 : 220 }}

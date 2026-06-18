@@ -11,30 +11,6 @@ const MESSAGES = {
 
 const SCORES = { A: 91, B: 81 };
 
-// Simple confetti particles
-function Confetti() {
-  const colours = ['#D4500A', '#1B7E3A', '#2B5797', '#E65100', '#ffffff'];
-  return (
-    <div className="pointer-events-none fixed inset-0 overflow-hidden z-50">
-      {Array.from({ length: 30 }).map((_, i) => (
-        <div
-          key={i}
-          className="confetti-piece rounded-sm"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `-${Math.random() * 20}px`,
-            backgroundColor: colours[i % colours.length],
-            width: `${6 + Math.random() * 8}px`,
-            height: `${6 + Math.random() * 8}px`,
-            animationDelay: `${Math.random() * 2}s`,
-            animationDuration: `${2 + Math.random() * 3}s`,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
 export default function SuccessOutcome({ scenarioId = 'A', onNavigate }) {
   const scenario = scenarios.scenarios.find((s) => s.id === scenarioId) || scenarios.scenarios[0];
   const finalScore = SCORES[scenarioId] ?? scenario.trustScore;
@@ -46,8 +22,7 @@ export default function SuccessOutcome({ scenarioId = 'A', onNavigate }) {
   }, [finalScore]);
 
   return (
-    <div className="min-h-full bg-background flex flex-col items-center justify-center px-8 py-12 relative overflow-hidden">
-      <Confetti />
+    <div className="min-h-full bg-transparent flex flex-col items-center justify-center px-8 py-12 relative overflow-hidden">
 
       <div className="relative z-10 flex flex-col items-center gap-8 max-w-lg w-full text-center">
         {/* Success circle */}

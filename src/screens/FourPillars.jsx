@@ -55,7 +55,7 @@ const pillars = [
 
 export default function FourPillars({ onNavigate }) {
   return (
-    <div className="min-h-full bg-background px-8 py-10">
+    <div className="min-h-full bg-transparent px-8 py-10">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div

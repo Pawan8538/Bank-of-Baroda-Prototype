@@ -35,7 +35,7 @@ const actionCards = [
 export default function ProtectionMode({ onNavigate }) {
   return (
     <div
-      className="min-h-full px-8 py-10 overflow-hidden bg-background"
+      className="min-h-full px-8 py-10 overflow-hidden bg-transparent"
     >
       <div className="max-w-5xl mx-auto flex flex-col gap-10">
         {/* Alert */}

@@ -45,12 +45,12 @@ export default function ParticleNetwork() {
         const dy = mouse.y - this.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         
-        if (dist < 120) {
+        if (dist < 200) {
           const forceDirectionX = dx / dist;
           const forceDirectionY = dy / dist;
-          const force = (120 - dist) / 120;
-          this.x -= forceDirectionX * force * 3;
-          this.y -= forceDirectionY * force * 3;
+          const force = (200 - dist) / 200;
+          this.x -= forceDirectionX * force * 15;
+          this.y -= forceDirectionY * force * 15;
         }
       }
       
@@ -96,29 +96,28 @@ export default function ParticleNetwork() {
     animate();
 
     const handleMouseMove = (e) => {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
     };
     const handleMouseLeave = () => {
       mouse.x = -1000;
       mouse.y = -1000;
     };
     
-    canvas.addEventListener('mousemove', handleMouseMove);
-    canvas.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseleave', handleMouseLeave);
     
     return () => {
       window.removeEventListener('resize', resize);
-      canvas.removeEventListener('mousemove', handleMouseMove);
-      canvas.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);
 
   return (
     <canvas 
       ref={canvasRef} 
-      className="absolute inset-0 w-full h-full pointer-events-auto z-0"
+      className="fixed inset-0 w-full h-full pointer-events-none z-0"
     />
   );
 }
