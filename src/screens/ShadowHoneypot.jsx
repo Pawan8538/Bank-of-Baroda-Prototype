@@ -6,14 +6,22 @@ export default function ShadowHoneypot({ onNavigate }) {
   const [fakeTransfer, setFakeTransfer] = useState(false);
 
   return (
-    <div className="min-h-full bg-transparent flex flex-col items-center justify-center px-8 py-10 relative overflow-hidden">
+    <div className="min-h-full bg-transparent flex flex-col items-center px-8 py-10 gap-8 overflow-y-auto">
       
+      {/* Top Warning Label */}
+      <div className="bg-red-50 text-red-600 border border-red-200 px-6 py-3 rounded-lg font-bold text-sm text-center max-w-4xl w-full">
+        🚨 NOTE FOR JUDGES: This entire dashboard is for Bank Fraud Ops only. The victim does NOT see this screen.
+      </div>
+
       {/* The Fake User Dashboard (What the attacker sees) */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         className="w-full max-w-4xl bg-white border border-slate-200 shadow-sm rounded-2xl overflow-hidden relative z-10"
       >
+        <div className="bg-slate-100 text-slate-500 text-xs font-bold uppercase tracking-widest text-center py-2 border-b border-slate-200">
+          Attacker's View (Simulated Environment)
+        </div>
         <div className="bg-corporate px-6 py-4 text-white flex justify-between items-center">
           <div className="font-bold text-lg">My Accounts</div>
           <div className="text-xs opacity-70">Welcome back</div>
@@ -69,11 +77,15 @@ export default function ShadowHoneypot({ onNavigate }) {
 
       {/* The "Judge/Presenter" Overlay (Revealing the Honeypot) */}
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1 }}
-        className="fixed bottom-10 left-1/2 -translate-x-1/2 w-full max-w-3xl bg-slate-900 border border-slate-700 shadow-[0_0_50px_rgba(0,0,0,0.5)] rounded-2xl p-6 z-50 text-white flex flex-col items-center text-center overflow-hidden"
+        className="w-full max-w-4xl bg-slate-900 border border-slate-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-2xl p-6 z-50 text-white flex flex-col items-center text-center overflow-hidden relative"
       >
+        <div className="absolute top-0 left-0 w-full bg-slate-800 text-slate-400 text-[10px] font-bold uppercase tracking-widest text-center py-1">
+          Bank Fraud Ops View
+        </div>
+        <div className="mt-4" />
         {/* Radar scanning background effect */}
         <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, #4ade80 2px, #4ade80 4px)', backgroundSize: '100% 4px' }} />
         

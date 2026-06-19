@@ -109,17 +109,8 @@ export default function DecisionGate({ scenarioId = 'A', onNavigate }) {
             onClick={() => onNavigate(NEXT_ROUTES[scenario.decision] || 'select', scenarioId)}
             className="btn-primary flex items-center gap-3 text-lg px-10 py-4 w-full justify-center shadow-sm cursor-pointer"
           >
-            {BUTTON_LABELS[scenario.decision]}
+            {scenario.decision === 'BLOCK' ? 'BLOCK ATTACKER (Routes to Honeypot)' : BUTTON_LABELS[scenario.decision]}
           </button>
-          
-          {scenario.decision === 'BLOCK' && (
-            <button
-              onClick={() => onNavigate('protection', scenarioId)}
-              className="flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-bold transition-all border border-slate-200 bg-white text-slate-500 hover:bg-slate-50 hover:text-slate-700 cursor-pointer w-full text-base"
-            >
-              Standard Block (Protection Mode) <ArrowRight size={16} />
-            </button>
-          )}
         </motion.div>
       </div>
     </div>

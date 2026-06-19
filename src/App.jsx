@@ -18,6 +18,7 @@ import ArchitectureScreen from '@/screens/ArchitectureScreen';
 import BusinessImpact from '@/screens/BusinessImpact';
 import ShadowHoneypot from '@/screens/ShadowHoneypot';
 import DuressOutcome from '@/screens/DuressOutcome';
+import CustomerAttackView from '@/screens/CustomerAttackView';
 
 export default function App() {
   const [screen, setScreen] = useState(() => {
@@ -61,6 +62,7 @@ export default function App() {
       case 'impact':       return <BusinessImpact {...props} />;
       case 'shadow':       return <ShadowHoneypot {...props} />;
       case 'duress':       return <DuressOutcome {...props} />;
+      case 'customer-attack': return <CustomerAttackView {...props} />;
       default:             return <Landing {...props} />;
     }
   };

@@ -8,37 +8,24 @@ import {
 
 const navGroups = [
   {
-    label: 'Introduction',
+    label: 'Overview',
     items: [
-      { key: 'landing', label: 'Landing', icon: Home },
+      { key: 'landing', label: 'Landing Page', icon: Home },
       { key: 'overview', label: 'Platform Overview', icon: Layers },
-      { key: 'pillars', label: 'Four Pillars', icon: Shield },
     ],
   },
   {
-    label: 'Demo Scenarios',
+    label: 'Interactive Demo',
     items: [
-      { key: 'select', label: 'Scenario Select', icon: Users },
-      { key: 'signals', label: 'Signal Collection', icon: Activity },
-      { key: 'ice', label: 'ICE Engine', icon: Cpu },
-      { key: 'decision', label: 'Decision Gate', icon: Zap },
+      { key: 'select', label: 'Run Attack Scenarios', icon: Zap },
     ],
   },
   {
-    label: 'Outcomes',
-    items: [
-      { key: 'blink', label: 'Blink Verify', icon: Eye },
-      { key: 'protection', label: 'Protection Mode', icon: Bell },
-      { key: 'success', label: 'Success Outcome', icon: RefreshCw },
-      { key: 'timeline', label: 'Incident Timeline', icon: FileText },
-    ],
-  },
-  {
-    label: 'Operations',
+    label: 'Enterprise Dashboards',
     items: [
       { key: 'dashboard', label: 'Fraud Ops Center', icon: BarChart3 },
-      { key: 'architecture', label: 'Architecture', icon: Layers },
-      { key: 'impact', label: 'Business Impact', icon: ChevronRight },
+      { key: 'architecture', label: 'System Architecture', icon: Cpu },
+      { key: 'impact', label: 'Business Impact', icon: FileText },
     ],
   },
 ];

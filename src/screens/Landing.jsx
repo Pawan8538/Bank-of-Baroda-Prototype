@@ -55,16 +55,17 @@ export default function Landing({ onNavigate }) {
           >
             <button
               onClick={() => onNavigate('select')}
-              className="btn-primary text-lg px-8 py-4 shadow-md"
+              className="btn-primary text-base px-6 py-4 shadow-md"
             >
-              Start Demo
-              <ArrowRight size={20} />
+              Start Demo (Bank POV)
+              <ArrowRight size={18} />
             </button>
             <button
-              onClick={() => onNavigate('architecture')}
-              className="btn-outline text-lg px-8 py-4"
+              onClick={() => onNavigate('customer-attack')}
+              className="btn-outline text-base px-6 py-4 border-slate-300 text-slate-700 hover:border-corporate hover:text-corporate"
             >
-              View Architecture
+              View Customer POV
+              <ArrowRight size={18} />
             </button>
           </motion.div>
 
