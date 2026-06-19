@@ -18,7 +18,7 @@ export default function BoBLogoBar({ onNavigate }) {
       <div className="flex items-center gap-4">
         <button
           onClick={() => onNavigate?.('landing')}
-          className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+          className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer"
         >
           <div className="relative flex items-center justify-center">
             <Shield size={32} className="text-primary" strokeWidth={1.5} />
@@ -39,7 +39,7 @@ export default function BoBLogoBar({ onNavigate }) {
       <div className="flex items-center gap-4">
         {/* Language Selector */}
         <div className="relative">
-          <button 
+          <button
             onClick={() => setLangOpen(!langOpen)}
             className="flex items-center gap-1.5 text-text-secondary hover:text-corporate transition-colors px-2 py-1 rounded-md hover:bg-slate-50"
           >
@@ -47,7 +47,7 @@ export default function BoBLogoBar({ onNavigate }) {
             <span className="text-xs font-bold">{currentLang}</span>
             <ChevronDown size={14} className={`transition-transform ${langOpen ? 'rotate-180' : ''}`} />
           </button>
-          
+
           {langOpen && (
             <>
               <div className="fixed inset-0 z-40" onClick={() => setLangOpen(false)} />
@@ -59,11 +59,10 @@ export default function BoBLogoBar({ onNavigate }) {
                       setCurrentLang(lang.code);
                       setLangOpen(false);
                     }}
-                    className={`w-full text-left px-4 py-2 text-sm transition-colors ${
-                      currentLang === lang.code 
-                        ? 'bg-primary/10 text-primary font-bold' 
-                        : 'text-text-secondary hover:bg-slate-50 hover:text-corporate'
-                    }`}
+                    className={`w-full text-left px-4 py-2 text-sm transition-colors ${currentLang === lang.code
+                      ? 'bg-primary/10 text-primary font-bold'
+                      : 'text-text-secondary hover:bg-slate-50 hover:text-corporate'
+                      }`}
                   >
                     {lang.name}
                   </button>
