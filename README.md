@@ -1,16 +1,28 @@
-# React + Vite
+# Bank of Baroda: Identity Trust Platform 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Demo:** [https://pawan8538.github.io/Bank-of-Baroda-Prototype/](https://pawan8538.github.io/Bank-of-Baroda-Prototype/)
 
-Currently, two official plugins are available:
+## About the Project
+Traditional security relies heavily on passwords and OTPs, which are vulnerable to phishing and SIM swapping. The **Identity Trust Platform** is a next-generation, AI-driven security architecture designed for the Bank of Baroda. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Instead of blocking users outright, it continuously analyzes device, behavioral, and biometric signals in the background to generate a dynamic **Trust Score**. If an attacker attempts to hijack an account, the system instantly detects the anomalies and seamlessly routes the attacker into a **Shadow Honeypot**—securing the real funds while gathering threat intelligence, completely invisible to the hacker.
 
-## React Compiler
+## Core Features
+- **Real-Time Signal Collection:** Analyzes Device Fingerprinting, Geo-Velocity (Impossible Travel), Behavioral Biometrics, and Telecom SIM Integrity.
+- **ICE Engine (Explainable AI):** Evaluates risk in under 50ms, producing a transparent Trust Score that determines the authentication path.
+- **Shadow Honeypot Routing:** Silently isolates attackers in a simulated banking environment instead of alerting them with a block screen.
+- **Automated Fraud Ops Center:** Provides security teams with a unified incident timeline, instant session revocation, and forensic tracking.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## How to Use It (Local Setup)
+If you want to run the prototype locally for testing or development:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone the repository and navigate into the folder.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:5173](http://localhost:5173) in your browser.
