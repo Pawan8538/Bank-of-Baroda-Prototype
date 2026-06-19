@@ -32,6 +32,21 @@ const faqs = [
     category: "Architecture & Privacy (Hackathon)",
     q: "What about the 'Cold Start' problem for new accounts?",
     a: "New accounts start in a secure 'sandbox' governed by strict traditional rule-based policies. The AI engine runs silently in the background, building a highly accurate behavioral baseline over the first 30 days before taking full control."
+  },
+  {
+    category: "Technical Implementation (Hackathon)",
+    q: "What ML models power the ICE Engine?",
+    a: "We use a hybrid ensemble. Fast, rule-based heuristics block known threats instantly, while an XGBoost anomaly detection model running on the backend handles complex behavioral pattern analysis in under 50ms."
+  },
+  {
+    category: "Technical Implementation (Hackathon)",
+    q: "How does the system scale for millions of users?",
+    a: "The architecture is designed as a distributed, event-driven microservices mesh. The Signal Collection and ICE Engine components can be deployed as serverless edge functions to ensure zero-latency scoring during peak banking hours."
+  },
+  {
+    category: "Security Strategy (Hackathon)",
+    q: "Why use a Shadow Honeypot instead of just blocking?",
+    a: "Blocking attackers tells them their method failed, prompting them to adapt. A honeypot silently contains them in a simulated environment, allowing us to safely collect critical threat intelligence on their tactics without risking actual funds."
   }
 ];
 
