@@ -16,6 +16,8 @@ import IncidentTimeline from '@/screens/IncidentTimeline';
 import FraudOpsCenter from '@/screens/FraudOpsCenter';
 import ArchitectureScreen from '@/screens/ArchitectureScreen';
 import BusinessImpact from '@/screens/BusinessImpact';
+import ShadowHoneypot from '@/screens/ShadowHoneypot';
+import DuressOutcome from '@/screens/DuressOutcome';
 
 export default function App() {
   const [screen, setScreen] = useState(() => {
@@ -57,6 +59,8 @@ export default function App() {
       case 'dashboard':    return <FraudOpsCenter {...props} />;
       case 'architecture': return <ArchitectureScreen {...props} />;
       case 'impact':       return <BusinessImpact {...props} />;
+      case 'shadow':       return <ShadowHoneypot {...props} />;
+      case 'duress':       return <DuressOutcome {...props} />;
       default:             return <Landing {...props} />;
     }
   };

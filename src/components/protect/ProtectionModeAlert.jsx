@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { AlertTriangle, Shield } from 'lucide-react';
+import { AlertTriangle, Shield, Fingerprint } from 'lucide-react';
 
 export default function ProtectionModeAlert({ incidentId = 'INC-2026-00847' }) {
   return (
@@ -17,9 +17,12 @@ export default function ProtectionModeAlert({ incidentId = 'INC-2026-00847' }) {
         <motion.div
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-20 h-20 rounded-full bg-red-100 border-[3px] border-red-300 flex items-center justify-center shadow-inner"
+          className="w-20 h-20 rounded-full bg-red-100 border-[3px] border-red-300 flex items-center justify-center shadow-inner relative"
         >
-          <Shield className="w-10 h-10 text-red-600" />
+          <Shield className="w-12 h-12 text-red-600" strokeWidth={1.5} />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Fingerprint className="w-6 h-6 text-red-600" strokeWidth={2} />
+          </div>
         </motion.div>
 
         <div>

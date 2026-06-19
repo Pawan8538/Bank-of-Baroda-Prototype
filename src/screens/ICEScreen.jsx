@@ -11,7 +11,7 @@ export default function ICEScreen({ scenarioId = 'A', onNavigate }) {
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowButton(true), 3000);
+    const timer = setTimeout(() => setShowButton(true), 1200);
     return () => clearTimeout(timer);
   }, []);
 

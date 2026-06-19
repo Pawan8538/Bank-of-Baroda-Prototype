@@ -16,7 +16,9 @@ export function useSignalFeed(scenarioSignals = []) {
         clearInterval(interval);
         return;
       }
-      setSignals((prev) => [...prev, scenarioSignals[i++]]);
+      const currentSignal = scenarioSignals[i];
+      setSignals((prev) => [...prev, currentSignal]);
+      i++;
     }, 350);
 
     return () => clearInterval(interval);

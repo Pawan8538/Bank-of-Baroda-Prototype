@@ -1,18 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, AlertTriangle, XOctagon } from 'lucide-react';
+import { CheckCircle2, AlertTriangle, XOctagon, ShieldAlert } from 'lucide-react';
 import { decisionConfig } from '@/utils/riskColour';
 
 const icons = {
   ALLOW: CheckCircle2,
   VERIFY: AlertTriangle,
   BLOCK: XOctagon,
+  'SILENT ALARM': ShieldAlert,
 };
 
 const labels = {
   ALLOW: 'APPROVED',
   VERIFY: 'VERIFY REQUIRED',
   BLOCK: 'BLOCKED',
+  'SILENT ALARM': 'SILENT ALARM',
 };
 
 export default function DecisionBadge({ decision = 'ALLOW', size = 'lg' }) {

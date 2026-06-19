@@ -37,7 +37,7 @@ export default function ScenarioSelect({ onNavigate }) {
         </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-4 gap-6 mb-12">
           {scenarios.scenarios.map((s, i) => (
             <ScenarioCard
               key={s.id}
@@ -59,7 +59,7 @@ export default function ScenarioSelect({ onNavigate }) {
             disabled={!selected}
             className={`flex items-center gap-2 px-10 py-4 rounded-xl font-bold text-lg transition-all shadow-sm
               ${selected
-                ? 'bg-primary text-white hover:bg-orange-600 hover:shadow-md'
+                ? 'bg-primary text-white hover:bg-orange-600 hover:shadow-md cursor-pointer'
                 : 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200'
               }
             `}

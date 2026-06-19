@@ -65,7 +65,29 @@
         { "name": "SIM Integrity", "score": 3, "weight": 30 },
         { "name": "Behaviour Pattern", "score": 1, "weight": 15 }
       ],
-      "explanation": "CRITICAL THREAT DETECTED. Three simultaneous red flags: (1) Unrecognised device fingerprint FP_0019X. (2) Impossible travel — account last accessed from London 45 minutes ago; current attempt from Mumbai. (3) SIM swap confirmed — carrier identity changed 6 hours ago. Auto-block engaged. Account Protection Mode activating."
+      "explanation": "CRITICAL THREAT DETECTED. Three simultaneous red flags: Unrecognised device fingerprint, Impossible travel, and SIM swap confirmed. AUTO_BLOCK engaged. Attacker is being silently routed to Shadow Honeypot Infrastructure to harvest threat intelligence."
+    },
+    {
+      "id": "D",
+      "name": "Ramesh Kumar",
+      "label": "Coerced User",
+      "avatar": "RK",
+      "riskLevel": "critical",
+      "trustScore": 90,
+      "decision": "SILENT ALARM",
+      "signals": [
+        { "id": "device", "name": "Device Fingerprint", "status": "trusted", "value": "FP_4421Z — Known device" },
+        { "id": "location", "name": "Geo Location", "status": "trusted", "value": "Surat, GJ — matches profile" },
+        { "id": "sim", "name": "SIM Integrity", "status": "stable", "value": "No SIM change in 12 months" },
+        { "id": "behaviour", "name": "Auth Method", "status": "critical", "value": "⚠ DURESS PIN ENTERED" }
+      ],
+      "factors": [
+        { "name": "Device Trust", "score": 95, "weight": 30 },
+        { "name": "Location Risk", "score": 92, "weight": 25 },
+        { "name": "SIM Integrity", "score": 98, "weight": 30 },
+        { "name": "Behaviour Pattern", "score": 5, "weight": 15 }
+      ],
+      "explanation": "EMERGENCY: User entered the emergency Duress PIN under physical threat. System is feigning a successful login to protect the user's physical safety, while silently freezing all outbound funds and dispatching an emergency alert to authorities."
     }
   ]
 }

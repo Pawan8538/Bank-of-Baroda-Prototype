@@ -30,6 +30,7 @@ export function decisionConfig(decision) {
     ALLOW: { hex: '#1B7E3A', label: 'APPROVED', bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-400', glowClass: 'shadow-glow-green', darkBg: 'bg-green-900/20', darkBorder: 'border-green-500', darkText: 'text-green-400' },
     VERIFY: { hex: '#E65100', label: 'VERIFY', bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-400', glowClass: 'shadow-glow', darkBg: 'bg-orange-900/20', darkBorder: 'border-orange-500', darkText: 'text-orange-400' },
     BLOCK: { hex: '#B71C1C', label: 'BLOCKED', bg: 'bg-red-50', text: 'text-red-700', border: 'border-red-500', glowClass: 'shadow-glow-red', darkBg: 'bg-red-900/20', darkBorder: 'border-red-500', darkText: 'text-red-400' },
+    'SILENT ALARM': { hex: '#0F172A', label: 'SILENT ALARM', bg: 'bg-slate-900', text: 'text-white', border: 'border-slate-700', glowClass: 'shadow-glow', darkBg: 'bg-slate-900', darkBorder: 'border-slate-700', darkText: 'text-white' },
   };
   return map[decision] ?? map.VERIFY;
 }

@@ -31,6 +31,7 @@ export default function ParticleNetwork() {
         this.vx = (Math.random() - 0.5) * 1.5;
         this.vy = (Math.random() - 0.5) * 1.5;
         this.radius = Math.random() * 1.5 + 1;
+        this.color = Math.random() < 0.4 ? 'rgba(230, 81, 0, 0.6)' : 'rgba(15, 32, 68, 0.4)';
       }
       
       update() {
@@ -57,7 +58,7 @@ export default function ParticleNetwork() {
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(15, 32, 68, 0.4)';
+        ctx.fillStyle = this.color;
         ctx.fill();
       }
     }

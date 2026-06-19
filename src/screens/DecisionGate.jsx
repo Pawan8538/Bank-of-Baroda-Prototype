@@ -8,19 +8,22 @@ import { decisionConfig } from '@/utils/riskColour';
 const NEXT_ROUTES = {
   ALLOW: 'success',
   VERIFY: 'blink',
-  BLOCK: 'protection',
+  BLOCK: 'shadow',
+  'SILENT ALARM': 'duress',
 };
 
 const DESCRIPTIONS = {
   ALLOW: (name) => `${name} has been verified with high confidence. Recovery is permitted instantly — zero friction.`,
   VERIFY: (name) => `Medium risk detected for ${name}. A new device was used. Blink liveness verification required before proceeding.`,
-  BLOCK: () => `Critical threat detected. Multiple fraud indicators active simultaneously. Recovery attempt blocked. Account Protection Mode activating.`,
+  BLOCK: () => `CRITICAL THREAT. Auto-Block engaged. Attacker is being isolated and routed to Shadow Infrastructure to capture forensics without alerting them.`,
+  'SILENT ALARM': () => `DURESS PIN DETECTED. The user is under coercion. Accepting login to protect physical safety, while silently freezing all outbound funds.`,
 };
 
 const BUTTON_LABELS = {
   ALLOW: 'View Success →',
   VERIFY: 'Begin Verification →',
-  BLOCK: 'View Protection Mode →',
+  BLOCK: 'Deploy Shadow Honeypot →',
+  'SILENT ALARM': 'Trigger Silent Alarm →',
 };
 
 export default function DecisionGate({ scenarioId = 'A', onNavigate }) {
@@ -95,16 +98,29 @@ export default function DecisionGate({ scenarioId = 'A', onNavigate }) {
           </div>
         </motion.div>
 
-        {/* Action button */}
-        <motion.button
+        {/* Action buttons */}
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.9, type: 'spring' }}
-          onClick={() => onNavigate(NEXT_ROUTES[scenario.decision] || 'select', scenarioId)}
-          className="btn-primary flex items-center gap-3 text-lg px-10 py-4 w-full justify-center shadow-sm"
+          className="w-full flex flex-col gap-3"
         >
-          {BUTTON_LABELS[scenario.decision]}
-        </motion.button>
+          <button
+            onClick={() => onNavigate(NEXT_ROUTES[scenario.decision] || 'select', scenarioId)}
+            className="btn-primary flex items-center gap-3 text-lg px-10 py-4 w-full justify-center shadow-sm cursor-pointer"
+          >
+            {BUTTON_LABELS[scenario.decision]}
+          </button>
+          
+          {scenario.decision === 'BLOCK' && (
+            <button
+              onClick={() => onNavigate('protection', scenarioId)}
+              className="flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-bold transition-all border border-slate-200 bg-white text-slate-500 hover:bg-slate-50 hover:text-slate-700 cursor-pointer w-full text-base"
+            >
+              Standard Block (Protection Mode) <ArrowRight size={16} />
+            </button>
+          )}
+        </motion.div>
       </div>
     </div>
   );

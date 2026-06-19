@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Shield, Globe, ChevronDown } from 'lucide-react';
+import { Shield, Globe, ChevronDown, Fingerprint } from 'lucide-react';
 
 export default function BoBLogoBar({ onNavigate }) {
   const [langOpen, setLangOpen] = useState(false);
@@ -20,6 +20,12 @@ export default function BoBLogoBar({ onNavigate }) {
           onClick={() => onNavigate?.('landing')}
           className="flex items-center gap-3 hover:opacity-80 transition-opacity"
         >
+          <div className="relative w-10 h-10 flex items-center justify-center rounded-lg bg-orange-50 border border-orange-100/50">
+            <Shield size={28} className="text-primary" strokeWidth={1.5} />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Fingerprint size={14} className="text-primary opacity-80" strokeWidth={2} />
+            </div>
+          </div>
           <div className="text-left">
             <div className="text-corporate font-black text-xl tracking-tight leading-none">Bank of Baroda</div>
             <div className="text-primary text-[10px] font-bold tracking-widest uppercase leading-tight mt-1">
